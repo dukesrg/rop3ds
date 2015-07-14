@@ -59,7 +59,7 @@
 	#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001BC384
 	#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x001C8150
 	#define CODE_TARGET			0x17EA0000
-#elif defined(SPIDER_4) //1.7495.JP/US/EU
+#elif defined(SPIDER_4) //1.7498.JP/US/EU
 	#define DLPLAY_CODE_LOC			(DLPLAY_CODE_LOC_VA-0x00100000+0x03F50000+0x14000000-0x4000)
 	#define DLPLAY_HOOK_LOC			(0x1A3500-0x00100000+0x03F50000+0x14000000-0x4000)
 	#define SPIDER_GSPHEAPBUF		0x18410000
@@ -99,7 +99,7 @@
 	#define MAGIC				0x002D6A1C
 #elif defined(SPIDER_4_CN) //1.7538.CN ???
 	#warning ROP version not supported
-#elif defined(SPIDER_4_KR) || defined(SPIDER_4_TW)
+#elif defined(SPIDER_4_KR) || defined(SPIDER_4_TW) //1.7538.KR/TW
 	#define CODE_TARGET			0x19592000
 	#define DMC				0x0010509F
 	#define POP_PC				0x001057B4
