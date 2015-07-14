@@ -258,6 +258,9 @@
 #define rop_gx_command(command) .word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+command, POP_LR_PC, POP_PC, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue
 #define rop_gx_texture_copy(src, dst, size) .word GX_SetTextureCopy, src, dst, size, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008, 0
 */
-#define rop_gx_texture_copy(src, dst, size)	__LINE__:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+__LINE__+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue, GX_SetTextureCopy, src, dst, size, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008
+#define JOIN(a,b)	a##b
+#define LABEL(a)	JOIN(loc_, a)
+#define LINE_LABEL	LABEL(__LINE__)
+#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue, GX_SetTextureCopy, src, dst, size, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008
 #define rop_jump(address)		.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, address-4, SP_LR_LDMFD_SP_LR_PC
 #define rop_jump_arm			.word CODE_ENTRY
