@@ -284,7 +284,7 @@
 		#define rop_file_read(handle, readcount, buffer, size) .word POP_R2, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_1_2_3_4_PC, handle, readcount, buffer, size, GARBAGE, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
 		#define rop_file_write(handle, writecount, buffer, size) .word POP_R2, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_1_2_3_4_PC, handle, writecount, buffer, size, GARBAGE, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
 		#define rop_memcpy(dst, src, size) .word POP_R2, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_1_2_3_4_PC, dst, src, size, GARBAGE, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
-		#define rop_sleep(ns) .word POP_R0_PC, ns, POP_R1, 0, POP_R2, POP_PC, GARBAGE, POP_R4_LR_BX_R2, GARBAGE, SVC_0A_BX_LR 
+		#define rop_sleep(ns) .word POP_R0_PC, ns, POP_R1_PC, 0, POP_R2_PC, POP_PC, GARBAGE, POP_R4_LR_BX_R2, GARBAGE, SVC_0A_BX_LR 
 	#endif
 #else //SPIDER
 	#define CODE_ENTRY			0x009D2000
