@@ -224,7 +224,7 @@
 	#define CODE_ENTRY			0x00240000
 	#define rop_fs_mount(drive)		.word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC, GARBAGE, GARBAGE, GARBAGE
 	#define rop_file_open(handle, filename, mode)	.word POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, IFile_Open, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC
-	#define rop_flush_data_cache(handle, kprocess, buffer, size) .word POP_R0_1_2_3_4_PC, handle, kprocess, buffer, size, GARBAGE, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC, GARBAGE, GARBAGE, GARBAGE
+	#define rop_flush_data_cache(buffer, size) .word POP_R0_1_2_3_4_PC, HANDLE_PTR, KPROCESS_HANDLE, buffer, size, GARBAGE, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC, GARBAGE, GARBAGE, GARBAGE
 	#if defined(MSET_6)
 		#define rop_file_read(handle, readcount, buffer, size) .word POP_R0_1_2_3_4_PC, handle, readcount, buffer, size, GARBAGE, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
 		#define rop_file_write(handle, writecount, buffer, size) .word POP_R0_1_2_3_4_PC, handle, writecount, buffer, size, GARBAGE, POP_R1_2_3_PC, GARBAGE, POP_PC, GARBAGE, POP_R4_LR_BX_R2, GARBAGE, POP_PC, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
@@ -245,7 +245,7 @@
 	#define rop_file_write(handle, writecount, buffer, size)	.word POP_R0_1_2_3_4_PC, handle, writecount, buffer, size, GARBAGE, POP_LR_PC, POP_PC, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
 	#define rop_memcpy(dst,src,size)	.word POP_R0_1_2_3_4_PC, dst, src, size, GARBAGE, GARBAGE, POP_LR_PC, POP_PC, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
 	#define rop_sleep(ns)			.word POP_R0_PC, ns, POP_R1_PC, 0, POP_LR_PC, POP_PC, SVC_0A_BX_LR 
-	#define rop_flush_data_cache(handle, kprocess, buffer, size) .word POP_R0_1_2_3_4_PC, handle, kprocess, buffer, size, GARBAGE, POP_LR_PC, POP_PC, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC
+	#define rop_flush_data_cache(buffer, size) .word POP_R0_1_2_3_4_PC, HANDLE_PTR, KPROCESS_HANDLE, buffer, size, GARBAGE, POP_LR_PC, POP_PC, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC
 #endif
 /*
 #define rop_fs_mount(drive) .word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC, GARBAGE, GARBAGE, GARBAGE
