@@ -1,46 +1,35 @@
-CC=arm-none-eabi-gcc
-CFLAGS=-fPIE -fno-zero-initialized-in-bss -std=c99 -mcpu=mpcore -fshort-wchar -O2
-ASFLAGS=-nostartfiles -nostdlib
-LD=arm-none-eabi-gcc
-LDFLAGS=-T linker.x -nodefaultlibs -nostdlib -pie
-OBJCOPY=arm-none-eabi-objcopy
-OBJCOPYFLAGS=
-#DATSIZE=0x300
-DATSIZE=0
+ifeq ($(strip $(DEVKITARM)),)
+$(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
+endif
 
-all: LoadCode.dat rop.dat
-MSET_4: ASFLAGS+=-DMSET_4
-MSET_4_DG: ASFLAGS+=-DMSET_4_DG
-MSET_6: ASFLAGS+=-DMSET_6
-SPIDER_4: ASFLAGS+=-DSPIDER_4
-SPIDER_4_CN: ASFLAGS+=-DSPIDER_4_CN
-SPIDER_4_KR: ASFLAGS+=-DSPIDER_4_KR
-SPIDER_4_TW: ASFLAGS+=-DSPIDER_4_TW
-SPIDER_5: ASFLAGS+=-DSPIDER_5
-SPIDER_5_CN: ASFLAGS+=-DSPIDER_5_CN
-SPIDER_5_KR: ASFLAGS+=-DSPIDER_5_KR
-SPIDER_5_TW: ASFLAGS+=-DSPIDER_5_TW
-SPIDER_9: ASFLAGS+=-DSPIDER_9
-SPIDER_9_CN: ASFLAGS+=-DSPIDER_9_CN
-SPIDER_9_KR: ASFLAGS+=-DSPIDER_9_KR
-SPIDER_9_TW: ASFLAGS+=-DSPIDER_9_TW
-MSET_4 MSET_4_DG MSET_6 SPIDER_4 SPIDER_4_CN SPIDER_4_KR SPIDER_4_TW SPIDER_5 SPIDER_5_CN SPIDER_5_KR SPIDER_5_TW SPIDER_9 SPIDER_9_CN SPIDER_9_KR SPIDER_9_TW: all
-%.o: %.c
-	$(CC) -c -o $@ $< $(CFLAGS)
+include $(DEVKITARM)/base_rules
 
-%.ro: %.S
-	$(CC) -c -o $@ $< $(ASFLAGS)
+versions := mset_4 mset_4_dg mset_6 spider_4 spider_4_cn spider_4_kr spider_4_tw spider_5 spider_5_cn spider_5_kr spider_5_tw spider_9 spider_9_cn spider_9_kr spider_9_tw
 
-%.elf: %.o
-	$(LD) -o $@ $^ $(LDFLAGS)
+mset_4: ASFLAGS+=-DMSET_4
+mset_4_dg: ASFLAGS+=-DMSET_4_DG
+mset_6: ASFLAGS+=-DMSET_6
+spider_4: ASFLAGS+=-DSPIDER_4
+spider_4_cn: ASFLAGS+=-DSPIDER_4_CN
+spider_4_kr: ASFLAGS+=-DSPIDER_4_KR
+spider_4_tw: ASFLAGS+=-DSPIDER_4_TW
+spider_5: ASFLAGS+=-DSPIDER_5
+spider_5_cn: ASFLAGS+=-DSPIDER_5_CN
+spider_5_kr: ASFLAGS+=-DSPIDER_5_KR
+spider_5_tw: ASFLAGS+=-DSPIDER_5_TW
+spider_9: ASFLAGS+=-DSPIDER_9
+spider_9_cn: ASFLAGS+=-DSPIDER_9_CN
+spider_9_kr: ASFLAGS+=-DSPIDER_9_KR
+spider_9_tw: ASFLAGS+=-DSPIDER_9_TW
 
-%.bin: %.elf
-	$(OBJCOPY) -O binary $^ $@
+all: rop.dat LoadCode.dat 
 
-%.dat: %.ro
-	$(OBJCOPY) --pad-to $(DATSIZE) -O binary $^ $@
+$(versions): all
 
+%.elf: %.S
+	@$(CC) -c -o $@ $< $(ASFLAGS)
+%.dat: %.elf
+	@$(OBJCOPY) -O binary $^ $@
 .PHONY: clean
-
 clean:
-	rm -rf *~ *.o *.elf *.bin *.s *.dat
+	@rm -rf *.elf *.dat

@@ -363,7 +363,7 @@
 #define JOIN(a,b)	a##b
 #define LABEL(a)	JOIN(loc_, a)
 #define LINE_LABEL	LABEL(__LINE__)
-#if (defined(SPIDER_4) || defined(SPIDER_5) || defined(SPIDER_9) || defined(MSET_4) || defined(MSET_4_DG) || defined(MSET_6)) //SPIDER CN,KR,TW
+#if !(defined(SPIDER_4) || defined(SPIDER_5) || defined(SPIDER_9) || defined(MSET_4) || defined(MSET_4_DG) || defined(MSET_6)) //SPIDER CN,KR,TW
 	#define rop_gx_texture_copy(src, dst, size)	.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_1_2_3_4_7_PC, src, dst, size, 0x00000000, 0x00182C87, 0x001B560C, LDMFD_SP_R4_5_PC, 0x0000000F, CALL_3, BLX_R5_LDMFD_SP_R4_5_6_7_8_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_PC
 #else
 	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue, GX_SetTextureCopy, src, dst, size, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008
