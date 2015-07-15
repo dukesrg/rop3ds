@@ -63,9 +63,6 @@
 #elif defined(SPIDER_4X) //1.7498.JP/US/EU
 	#define DLPLAY_CODE_LOC			(DLPLAY_CODE_LOC_VA-0x00100000+0x03F50000+0x14000000-0x4000)
 	#define DLPLAY_HOOK_LOC			(0x1A3500-0x00100000+0x03F50000+0x14000000-0x4000)
-	#define SPIDER_GSPHEAPBUF		0x18410000
-	#define ROP_LOC				0x08B47400
-//	#define ROP_LOC				0x08CF2000
 	#define	HANDLE_PTR			0x003B643C
 	#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x00344C2C
 	#define nn__gxlow__CTR__detail__GetInterruptReceiver	0x003F54E8
@@ -102,6 +99,10 @@
 	#define DMC				0x002A5F27
 	#define CODE_TARGET			0x192D3000
 	#define MAGIC				0x002D6A1C
+	#ifdef SPIDER_ROP_LOC
+		#define ROP_LOC				0x08B47400
+//		#define ROP_LOC				0x08CF2000
+	#endif
 #elif defined(SPIDER_4X_CN) //1.7538.CN ???
 	#warning ROP version not supported
 #elif defined(SPIDER_4X_KR) || defined(SPIDER_4X_TW) //1.7538.KR/TW
@@ -113,7 +114,6 @@
 	#define	POP_R0_PC			0x0010C2F8
 	#define POP_R4_5_6_PC			0x0010014C
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x00106598
-	#define ROP_LOC				0x08CD0000
 	#if defined(SPIDER_4X_KR) //1.7538.KR
 		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019C258
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022F284
@@ -159,7 +159,6 @@
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C4E98
 		#define POP_R0_1_2_3_4_7_PC		0x0019348B
 		#define POP_R1_PC			0x002272A0
-		#define ROP_LOC				0x08CC0000
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FEBC
 		#define MAGIC				0x0012FEA8
 	#elif defined(SPIDER_5X_KR) //1.7552.KR
@@ -172,7 +171,6 @@
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C5748
 		#define POP_R0_1_2_3_4_7_PC		0x00194733
 		#define POP_R1_PC			0x00228274
-		#define ROP_LOC				0x08CD0000
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE90
 		#define MAGIC				0x0012FE7C
 	#elif defined(SPIDER_5X_TW) //1.7552.TW
@@ -185,16 +183,12 @@
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C57D8
 		#define POP_R0_1_2_3_4_7_PC		0x0019477B
 		#define POP_R1_PC			0x002282F0
-		#define ROP_LOC				0x08CD0000
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FEBC
 		#define MAGIC				0x012FEA8
 	#else //1.7552.JP/US/EU
 		#define DLPLAY_CODE_LOC			(DLPLAY_CODE_LOC_VA-0x00100000+0x03F50000+0x14000000)
 		#define DLPLAY_HOOK_LOC			(0x1A3500-0x00100000+0x03F50000+0x14000000)
 		#define SPIDER_GSPHEAPBUF		0x18410000
-		#define ROP_LOC				0x08B85400
-//		#define ROP_LOC				0x088B5400
-//		#define ROP_LOC				0x08CF208C
 		#define	HANDLE_PTR			0x003DA72C
 		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012C228
 		#define nn__gxlow__CTR__detail__GetInterruptReceiver	0x003D7C40
@@ -220,6 +214,11 @@
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168748
 		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x00240B58
 		#define MAGIC				0x0013038C
+		#ifdef SPIDER_ROP_LOC
+			#define ROP_LOC				0x08B85400
+//			#define ROP_LOC				0x088B5400
+//			#define ROP_LOC				0x08CF208C
+		#endif
 	#endif
 #elif defined(SPIDER_9X) || defined(SPIDER_9X_CN) || defined(SPIDER_9X_KR) || defined(SPIDER_9X_TW)
 	#define CALL_3				0x0011DD48				
@@ -240,7 +239,6 @@
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C4EB0
 		#define POP_R0_1_2_3_4_7_PC		0x0019349B
 		#define POP_R1_PC			0x0022728C
-		#define ROP_LOC				0x08CC0000
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE74
 		#define MAGIC				0x0012FE60
 	#elif defined(SPIDER_9X_KR) //1.7567.KR
@@ -253,7 +251,6 @@
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C5760
 		#define POP_R0_1_2_3_4_7_PC		0x0019473B
 		#define POP_R1_PC			0x0022825C
-		#define ROP_LOC				0x08CD0000
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE48
 		#define MAGIC				0x0012FE34
 	#elif defined(SPIDER_9X_TW) //1.7567.TW
@@ -266,15 +263,12 @@
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C57F8
 		#define POP_R0_1_2_3_4_7_PC		0x00194783
 		#define POP_R1_PC			0x002282D8
-		#define ROP_LOC				0x08CD0000
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE74
 		#define MAGIC				0x0012FE60
 	#else //1.7567.JP/US/EU
 		#define DLPLAY_CODE_LOC			(DLPLAY_CODE_LOC_VA-0x00100000+0x03F50000+0x14000000)
 		#define DLPLAY_HOOK_LOC			(0x03FF3500+0x14000000)
 		#define SPIDER_GSPHEAPBUF		0x18370000
-		#define ROP_LOC				0x08B88400
-//		#define ROP_LOC				0x08CF2000
 		#define	HANDLE_PTR			0x003DA72C
 		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012C1E0
 		#define nn__gxlow__CTR__detail__GetInterruptReceiver	0x003D7C40
@@ -300,6 +294,10 @@
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168764
 		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x00240B50
 		#define MAGIC				0x00130344
+		#ifdef SPIDER_ROP_LOC
+			#define ROP_LOC				0x08B88400
+//			#define ROP_LOC				0x08CF2000
+		#endif
 	#endif
 #else
 	#error ROP version not defined
@@ -332,6 +330,15 @@
 		#define BUFFER_LOC			0x18410000
 	#endif
 	#if !(defined(SPIDER_4X) || defined(SPIDER_5X) || defined(SPIDER_9X)) //SPIDER CN,KR,TW
+		#ifdef SPIDER_ROP_LOC //2nd stage Spider
+			#if (defined(SPIDER_4X_CN) || defined(SPIDER_5X_CN) || defined(SPIDER_9X_CN))
+				#define ROP_LOC				0x08CC0000
+			#else
+				#define ROP_LOC				0x08CD0000
+			#endif
+		#else
+			#define ROP_LOC				0x08F01000
+		#endif
 		#define rop_sleep(ns)			.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, CALL_BX_LR
 		#define rop_fs_mount(drive)		.word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC, GARBAGE, GARBAGE, GARBAGE
 		#define rop_file_open(handle, filename, mode)	.word POP_R0_1_2_3_4_7_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, GARBAGE, IFile_Open, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC
@@ -340,6 +347,9 @@
 		#define rop_memcpy(dst, src, size)	.word POP_R0_1_2_3_4_7_PC, dst, src, size, GARBAGE, GARBAGE, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
 		#define rop_flush_data_cache(buffer, size) .word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, buffer, POP_1_PC, size, CALL_BX_LR_2
 	#else
+		#ifndef SPIDER_ROP_LOC //2nd stage Spider
+			#define ROP_LOC				0x08F01000
+		#endif
 		#define rop_sleep(ns)			.word POP_LR_PC, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, SVC_0A_BX_LR 
 		#define rop_fs_mount(drive)		.word POP_LR_PC, POP_PC, POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC
 		#define rop_file_read(handle, readcount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, readcount, buffer, size, GARBAGE, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
