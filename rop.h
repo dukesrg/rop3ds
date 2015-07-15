@@ -304,13 +304,6 @@
 #else
 	#error ROP version not defined
 #endif
-#if defined(SPIDER_4X)
-	#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue	nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_PC
-	#define IFile_Open			IFile_Open_LDMFD_SP_R4_5_6_7_PC
-#else
-	#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue	nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC
-	#define IFile_Open			IFile_Open_LDMFD_SP_R4_5_6_7_8_PC
-#endif
 #if defined(MSET_4X) || defined(MSET_4X_DG) || defined(MSET_6X)
 	#define CODE_ENTRY			0x00240000
 	#define BUFFER_LOC			0x14700000
@@ -333,7 +326,11 @@
 	#endif
 #else //SPIDER
 	#define CODE_ENTRY			0x009D2000
-	#define BUFFER_LOC			0x18410000
+	#if defined(SPIDER_9X)
+		#define BUFFER_LOC			0x18370000
+	#else
+		#define BUFFER_LOC			0x18410000
+	#endif
 	#if !(defined(SPIDER_4X) || defined(SPIDER_5X) || defined(SPIDER_9X)) //SPIDER CN,KR,TW
 		#define rop_sleep(ns)			.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, CALL_BX_LR
 		#define rop_fs_mount(drive)		.word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC, GARBAGE, GARBAGE, GARBAGE
@@ -342,10 +339,14 @@
 		#define rop_file_write(handle, writecount, buffer, size)	.word POP_R0_1_2_3_4_7_PC, handle, writecount, buffer, size, GARBAGE, GARBAGE, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
 		#define rop_memcpy(dst, src, size)	.word POP_R0_1_2_3_4_7_PC, dst, src, size, GARBAGE, GARBAGE, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
 		#define rop_flush_data_cache(buffer, size) .word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, buffer, POP_1_PC, size, CALL_BX_LR_2
-	#else
+		#elif defined(SPIDER_4X)
+			#define rop_file_open(handle, filename, mode)	.word POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, POP_LR_PC, POP_PC, IFile_Open_LDMFD_SP_R4_5_6_7_PC
+		#else
+			#define rop_file_open(handle, filename, mode)	.word POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, POP_LR_PC, POP_PC, IFile_Open_LDMFD_SP_R4_5_6_7_8_PC
+nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC
+		#endif
 		#define rop_sleep(ns)			.word POP_R0_PC, ns, POP_R1_PC, 0, POP_LR_PC, POP_PC, SVC_0A_BX_LR 
 		#define rop_fs_mount(drive)		.word POP_R0_PC, drive, POP_LR_PC, POP_PC, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC
-		#define rop_file_open(handle, filename, mode)	.word POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, POP_LR_PC, POP_PC, IFile_Open
 		#define rop_file_read(handle, readcount, buffer, size)	.word POP_R0_1_2_3_4_PC, handle, readcount, buffer, size, GARBAGE, POP_LR_PC, POP_PC, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
 		#define rop_file_write(handle, writecount, buffer, size)	.word POP_R0_1_2_3_4_PC, handle, writecount, buffer, size, GARBAGE, POP_LR_PC, POP_PC, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
 		#define rop_memcpy(dst, src, size)	.word POP_R0_1_2_3_4_PC, dst, src, size, GARBAGE, GARBAGE, POP_LR_PC, POP_PC, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
@@ -367,9 +368,11 @@
 #define LABEL(a)	JOIN(loc_, a)
 #define LINE_LABEL	LABEL(__LINE__)
 #if !(defined(SPIDER_4X) || defined(SPIDER_5X) || defined(SPIDER_9X) || defined(MSET_4X) || defined(MSET_4X_DG) || defined(MSET_6X)) //SPIDER CN,KR,TW
-	#define rop_gx_texture_copy(src, dst, size)	.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_1_2_3_4_7_PC, src, dst, size, 0x00000000, 0x00182C87, 0x001B560C, LDMFD_SP_R4_5_PC, 0x0000000F, CALL_3, BLX_R5_LDMFD_SP_R4_5_6_7_8_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_PC
+	#define rop_gx_texture_copy(src, dst, size)	.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_1_2_3_4_7_PC, src, dst, (size+0xF)&~0xF, 0x00000000, 0x00182C87, 0x001B560C, LDMFD_SP_R4_5_PC, 0x0000000F, CALL_3, BLX_R5_LDMFD_SP_R4_5_6_7_8_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_PC
+#elif defined(SPIDER_4X)
+	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_PC + 4, GX_SetTextureCopy, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, POP_R0_PC, 0x00000008
 #else
-	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue + 4, GX_SetTextureCopy, src, dst, size, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008, POP_PC
+	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC + 4, GX_SetTextureCopy, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008
 #endif
 #define rop_jump(address)		.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, address-4, SP_LR_LDMFD_SP_LR_PC
 #define rop_jump_arm			.word CODE_ENTRY
