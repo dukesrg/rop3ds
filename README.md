@@ -15,7 +15,7 @@ Available option
 -----
 ARMCODE=file - include file content as ARM payload (for rpo.S only)
 
-SPIDER_ROP_LOC - force 1st Spider ROP code location
+SPIDER_ROP_LOC - force 1st stage Spider ROP code location
 
 Define value|Description|Status
 ----------|----------|----------
