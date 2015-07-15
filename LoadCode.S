@@ -1,6 +1,7 @@
 	.arm
 	.text
 
+#define SPIDER_ROP_LOC
 #include "rop.h"
 
 #define CODE_SIZE 0x00004000
@@ -16,4 +17,4 @@ _start:
 	rop_sleep(1000000000)
 	rop_jump_arm
 FileName:
-//	.string16 "dmc:/code.bin"
+	.string16 "dmc:/code.bin"
