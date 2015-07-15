@@ -313,6 +313,7 @@
 #endif
 #if defined(MSET_4X) || defined(MSET_4X_DG) || defined(MSET_6X)
 	#define CODE_ENTRY			0x00240000
+	#define BUFFER_LOC			0x14700000
 	#define rop_fs_mount(drive)		.word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC + 4, GARBAGE, GARBAGE, GARBAGE
 	#define rop_file_open(handle, filename, mode)	.word POP_R0_PC, handle, POP_R1_2_3_PC, ROP_LOC+filename, mode, GARBAGE, IFile_Open + 4, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC
 //	#define rop_file_read(handle, readcount, buffer, size) .word POP_R0_1_2_3_4_PC, handle, readcount, buffer, size, GARBAGE, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
@@ -332,6 +333,7 @@
 	#endif
 #else //SPIDER
 	#define CODE_ENTRY			0x009D2000
+	#define BUFFER_LOC			0x18410000
 	#if !(defined(SPIDER_4X) || defined(SPIDER_5X) || defined(SPIDER_9X)) //SPIDER CN,KR,TW
 		#define rop_sleep(ns)			.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, CALL_BX_LR
 		#define rop_fs_mount(drive)		.word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC, GARBAGE, GARBAGE, GARBAGE

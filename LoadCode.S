@@ -3,7 +3,6 @@
 
 #include "rop.h"
 
-#define BUFFER_LOC 0x18410000
 #define CODE_SIZE 0x00004000
 
 	.global	_start
