@@ -19,11 +19,11 @@ SPIDER_ROP_LOC - force 1st stage Spider ROP code location
 
 Define value|Description|Status
 ----------|----------|----------
-MSET_4X|use MSET fw 4.x JP/US/EU gadgets|working
+MSET_4X|use MSET fw 4.x JP/US/EU gadgets|OK
 MSET_4X_DG|use MSET fw 4.x JP/US/EU downgraded gadgets|not tested
-MSET_6X|use MSET fw 6.x  JP/US/EU gadgets|not tested
-SPIDER_4X|use Spider 1.7495.JP/US/EU gadgets|working
-SPIDER_4X_CN|use Spider 1.7538.CN gadgets|not supported
+MSET_6X|use MSET fw 6.x  JP/US/EU gadgets|OK
+SPIDER_4X|use Spider 1.7495.JP/US/EU gadgets|OK
+SPIDER_4X_CN|use Spider 1.7538.CN gadgets|NOT SUPPORTED
 SPIDER_4X_TW|use Spider 1.7538.KR gadgets|not tested
 SPIDER_4X_KR|use Spider 1.7538.TW gadgets|not tested
 SPIDER_5X|use Spider 1.7552.JP/US/EU gadgets|not tested
