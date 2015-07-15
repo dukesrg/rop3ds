@@ -340,17 +340,17 @@
 		#define rop_memcpy(dst, src, size)	.word POP_R0_1_2_3_4_7_PC, dst, src, size, GARBAGE, GARBAGE, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
 		#define rop_flush_data_cache(buffer, size) .word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, buffer, POP_1_PC, size, CALL_BX_LR_2
 	#else
-		#elif defined(SPIDER_4X)
-			#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_PC
-		#else
-			#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_8_PC
-		#endif
 		#define rop_sleep(ns)			.word POP_LR_PC, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, SVC_0A_BX_LR 
 		#define rop_fs_mount(drive)		.word POP_LR_PC, POP_PC, POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC
 		#define rop_file_read(handle, readcount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, readcount, buffer, size, GARBAGE, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
 		#define rop_file_write(handle, writecount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, writecount, buffer, size, GARBAGE, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
 		#define rop_memcpy(dst, src, size)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, dst, src, size, GARBAGE, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
 		#define rop_flush_data_cache(buffer, size) .word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, HANDLE_PTR, KPROCESS_HANDLE, buffer, size, GARBAGE, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC
+		#if defined(SPIDER_4X)
+			#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_PC
+		#else
+			#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_8_PC
+		#endif
 	#endif
 #endif
 /*
