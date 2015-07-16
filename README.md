@@ -8,14 +8,18 @@ rop.S - 2nd stage ARM code loader example
 
 How to build
 -----
-make loadcode ASFLAGS="-DSPIDER_ROP_LOC -DSPIDER_9" - build Spider 1st stage for version 1.7567 (fw9)
+make LoadCode.dat ASFLAGS="-DSPIDER_9 -DSPIDER_ARM_CODE=dmc:/code.bin" - build Spider 1st stage for version 1.7567 (fw9) and set ARM payload filename to code.bin, located on SD card
 
-make ASFLAGS="-DARMCODE=arm.bin -DSPIDER_9" - build for spider version 1.7567 (fw9) and include arm.bin as ARM payload
+make rop.dat ASFLAGS="-DSPIDER_9 -DARM_CODE=arm.bin" - build for spider version 1.7567 (fw9) and include arm.bin as ARM payload
 Available option
 -----
-ARMCODE=file - include file content as ARM payload (for rpo.S only)
+ARM_CODE=arm.bin - include file content as ARM payload (for rop.S)
 
-SPIDER_ROP_LOC - force 1st stage Spider ROP code location
+SPIDER_ARM_CODE=dmc:/code.bin - set Spider ARM payload filename (for LoadCode.S)
+
+SPIDER_ARM_CODE_OFFSET=0x100 - set Spider ARM payload offset in file (for LoadCode.S)
+
+SPIDER_ROP_LOC - force 1st stage Spider ROP code location (already defined in LoadCode.S)
 
 Define value|Description|Status
 ----------|----------|----------

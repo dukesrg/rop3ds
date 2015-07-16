@@ -12,9 +12,9 @@ _start:
 	rop_sleep(1000000000)
 	rop_jump_arm
 arm_code:
-#ifdef ARMCODE
+#ifdef ARM_CODE
 	#define S_(x)	#x
 	#define S(x)	S_(x)
-	.incbin S(ARMCODE)
+	.incbin S(ARM_CODE)
 #endif
 arm_code_end:

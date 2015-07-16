@@ -4,13 +4,13 @@ endif
 
 include $(DEVKITARM)/base_rules
 
-all: rop.dat
-loadcode: LoadCode.dat 
+all: rop.dat LoadCode.dat
 
-%.elf: %.S
-	@$(CC) -c -o $@ $< $(ASFLAGS)
 %.dat: %.elf
 	@$(OBJCOPY) -O binary $^ $@
+%.elf: %.S
+	@$(CC) -c -o $@ $< $(ASFLAGS)
+
 .PHONY: clean
 clean:
 	@rm -rf *.elf *.dat
