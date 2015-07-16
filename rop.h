@@ -83,6 +83,7 @@
 	#define POP_R0_1_2_3_4_7_PC		0x0017943B
 	#define POP_R1_PC			0x00269758
 	#define	POP_R2_PC			0x0012F815
+	#define POP_R2_3_PC			0x00231A24
 	#define POP_R2_3_4_PC			0x00101878
 	#define POP_R3_PC			0x0011B064
 	#define POP_R4_PC			0x0010DAA8
@@ -115,6 +116,7 @@
 	#define LDMFD_SP_R4_5_PC		0x00101A44
 	#define POP_PC				0x001057B4
 	#define	POP_R0_PC			0x0010C2F8
+	#define POP_R3_PC			0x001050D4
 	#define POP_R1_2_3_PC			0x00103DC8
 	#define POP_R4_5_6_PC			0x0010014C //CN?
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x00106598
@@ -134,6 +136,7 @@
 		#define POP_LR_PC			0x0012FE98
 		#define POP_R0_1_2_3_4_7_PC		0x001932FB
 		#define POP_R1_PC			0x00226B2C
+		#define POP_R2_3_PC			0x0014C734
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
 //		#define MAGIC				0x?
 	#elif defined(SPIDER_4X_KR) //1.7538.KR
@@ -152,6 +155,7 @@
 		#define POP_LR_PC			0x0012FE6C
 		#define POP_R0_1_2_3_4_7_PC		0x00193F13
 		#define POP_R1_PC			0x00227A28
+		#define POP_R2_3_PC			0x0014D2D8
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE68
 		#define MAGIC				0x0012FE54
 	#elif defined(SPIDER_4X_TW) //1.7538.TW
@@ -170,6 +174,7 @@
 		#define POP_LR_PC			0x0012FE98
 		#define POP_R0_1_2_3_4_7_PC		0x00193F1B
 		#define POP_R1_PC			0x00227A64
+		#define POP_R2_3_PC			0x0014D29C
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
 		#define MAGIC				0x0012FE80
 	#endif
@@ -183,6 +188,8 @@
 	#define	POP_R0_PC			0x0010C324
 	#define	POP_R1_PC			0x00226AF8
 	#define POP_R1_2_3_PC			0x00103DC0
+	#define POP_R2_3_PC			0x0014C26C
+	#define POP_R3_PC			0x00105104
 //	#define POP_R4_5_6_PC			0x?
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065C8
 	#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD30 
@@ -208,6 +215,7 @@
 	#define POP_PC				0x001057E0
 	#define	POP_R0_PC			0x0010C320
 	#define POP_R1_2_3_PC			0x00103DC0
+	#define POP_R3_PC			0x00105100
 	#define POP_R4_5_6_PC			0x0010014C
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065C4
 //	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x0010CC4C
@@ -227,6 +235,7 @@
 		#define POP_LR_PC			0x0012FEC0
 		#define POP_R0_1_2_3_4_7_PC		0x0019348B
 		#define POP_R1_PC			0x002272A0
+		#define POP_R2_3_PC			0x0014C8AC
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FEBC
 		#define MAGIC				0x0012FEA8
 	#elif defined(SPIDER_5X_KR) //1.7552.KR
@@ -245,6 +254,7 @@
 		#define POP_LR_PC			0x0012FE94
 		#define POP_R0_1_2_3_4_7_PC		0x00194733
 		#define POP_R1_PC			0x00228274
+		#define POP_R2_3_PC			0x0014D49C
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE90
 		#define MAGIC				0x0012FE7C
 	#elif defined(SPIDER_5X_TW) //1.7552.TW
@@ -263,8 +273,9 @@
 		#define POP_LR_PC			0x0012FEC0
 		#define POP_R0_1_2_3_4_7_PC		0x0019477B
 		#define POP_R1_PC			0x002282F0
+		#define POP_R2_3_PC			0x0014D4A4
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FEBC
-		#define MAGIC				0x012FEA8
+		#define MAGIC				0x0012FEA8
 	#else //1.7552.JP/US/EU
 		#define DLPLAY_CODE_LOC			(DLPLAY_CODE_LOC_VA-0x00100000+0x03F50000+0x14000000)
 		#define DLPLAY_HOOK_LOC			(0x1A3500-0x00100000+0x03F50000+0x14000000)
@@ -282,7 +293,7 @@
 		#define POP_R0_1_2_3_4_PC		0x0012A3D4
 		#define POP_R0_1_2_3_4_7_PC		0x001946E3
 		#define POP_R1_PC			0x00228B10
-		#define	POP_R3_PC			0x00105100
+		#define POP_R2_3_PC			0x0014D554
 		#define POP_R2_3_4_PC			0x001007B4
 		#define POP_R4_PC			0x0010510C
 		#define SP_LR_LDMFD_SP_LR_PC		0x001303A0
@@ -308,6 +319,7 @@
 	#define POP_PC				0x001057C4
 	#define	POP_R0_PC			0x0010C2FC
 	#define POP_R1_2_3_PC			0x00103DAC
+	#define POP_R3_PC			0x001050E8
 	#define POP_R4_5_6_PC			0x0010014C
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065A8
 	#if defined(SPIDER_9X_CN) //1.7567.CN
@@ -326,6 +338,7 @@
 		#define POP_LR_PC			0x012FE78
 		#define POP_R0_1_2_3_4_7_PC		0x0019349B
 		#define POP_R1_PC			0x0022728C
+		#define POP_R2_3_PC			0x0014C8F4
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE74
 		#define MAGIC				0x0012FE60
 	#elif defined(SPIDER_9X_KR) //1.7567.KR
@@ -344,6 +357,7 @@
 		#define POP_LR_PC			0x0012FE4C
 		#define POP_R0_1_2_3_4_7_PC		0x0019473B
 		#define POP_R1_PC			0x0022825C
+		#define POP_R2_3_PC			0x0014D4E0
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE48
 		#define MAGIC				0x0012FE34
 	#elif defined(SPIDER_9X_TW) //1.7567.TW
@@ -362,6 +376,7 @@
 		#define POP_LR_PC			0x0012FE78
 		#define POP_R0_1_2_3_4_7_PC		0x00194783
 		#define POP_R1_PC			0x002282D8
+		#define POP_R2_3_PC			0x0014D4E8
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE74
 		#define MAGIC				0x0012FE60
 	#else //1.7567.JP/US/EU
@@ -381,8 +396,8 @@
 		#define POP_R0_1_2_3_4_PC		0x0010B5B4
 		#define POP_R0_1_2_3_4_7_PC		0x001946EB
 		#define POP_R1_PC			0x00228AF4
+		#define POP_R2_3_PC			0x0014D598
 		#define POP_R2_3_4_PC			0x001007B4
-		#define POP_R3_PC			0x001050E8
 		#define POP_R4_PC			0x001050F0
 		#define SP_LR_LDMFD_SP_LR_PC		0x00130358
 		#define STR_R1_0_POP_R4_PC		0x00106694
