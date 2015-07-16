@@ -436,34 +436,32 @@
 		#define rop_memcpy(dst, src, size) .word POP_R2_PC, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_PC, dst, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
 		#define rop_sleep(ns) .word POP_R0_PC, ns, POP_R1_PC, 0, POP_R2_PC, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, SVC_0A_BX_LR 
 	#endif
-#else //SPIDER
+#else //Spider
 	#define CODE_ENTRY			0x009D2000
-	#if defined(SPIDER_9X)
-		#define BUFFER_LOC			0x18370000
-	#else
-		#define BUFFER_LOC			0x18410000
-	#endif
-	#if !(defined(SPIDER_4X) || defined(SPIDER_5X) || defined(SPIDER_9X)) //SPIDER CN,KR,TW
-		#ifdef SPIDER_ROP_LOC //2nd stage Spider
+	#ifndef ROP_LOC
+		#if defined(SPIDER_ROP_LOC) //1st stage Spider only
 			#if (defined(SPIDER_4X_CN) || defined(SPIDER_5X_CN) || defined(SPIDER_9X_CN))
 				#define ROP_LOC				0x08CC0000
 			#else
 				#define ROP_LOC				0x08CD0000
 			#endif
-		#else
+		#else //2nd stage
 			#define ROP_LOC				0x08F01000
 		#endif
+	#endif
+	#if defined(SPIDER_9X)
+		#define BUFFER_LOC			0x18370000
+	#else
+		#define BUFFER_LOC			0x18410000
+	#endif
+	#if !(defined(SPIDER_4X) || defined(SPIDER_5X) || defined(SPIDER_9X)) //Spider CN,KR,TW
 //		#define rop_sleep(ns)			.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, CALL_BX_LR
-		#define rop_fs_mount(drive)		.word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC, GARBAGE, GARBAGE, GARBAGE
 //Workaround for missing gsgpuhandle/HANDLE_PTR
 		#define rop_flush_data_cache(buffer, size) .word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_PC, buffer, POP_1_PC, size, CALL_BX_LR_2
 	#else
-		#ifndef SPIDER_ROP_LOC //2nd stage Spider
-			#define ROP_LOC				0x08F01000
-		#endif
-		#define rop_fs_mount(drive)		.word POP_LR_PC, POP_PC, POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC
 		#define rop_flush_data_cache(buffer, size) .word POP_LR_PC, POP_PC, POP_R0_PC, HANDLE_PTR, POP_R1_2_3_PC, KPROCESS_HANDLE, buffer, size, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC
 	#endif
+	#define rop_fs_mount(drive)		.word POP_LR_PC, POP_PC, POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC
 	#define rop_sleep(ns)			.word POP_LR_PC, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, SVC_0A_BX_LR
 	#define rop_memcpy(dst, src, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, dst, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
 	#define rop_file_read(handle, readcount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, readcount, buffer, size, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
@@ -477,7 +475,7 @@
 #define JOIN(a,b)	a##b
 #define LABEL(a)	JOIN(loc_, a)
 #define LINE_LABEL	LABEL(__LINE__)
-#if !(defined(SPIDER_4X) || defined(SPIDER_5X) || defined(SPIDER_9X) || defined(MSET_4X) || defined(MSET_4X_DG) || defined(MSET_6X)) //SPIDER CN,KR,TW
+#if !(defined(SPIDER_4X) || defined(SPIDER_5X) || defined(SPIDER_9X) || defined(MSET_4X) || defined(MSET_4X_DG) || defined(MSET_6X)) //SpiderCN,KR,TW
 //Workaround for missing CN/KR/TW GetInterruptReceiver
 	#define rop_gx_texture_copy(src, dst, size)	.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_R0_1_2_3_4_7_PC, src, dst, (size+0xF)&~0xF, 0x00000000, 0x00182C87, 0x001B560C, LDMFD_SP_R4_5_PC, 0x0000000F, CALL_3, BLX_R5_LDMFD_SP_R4_5_6_7_8_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, POP_PC
 #elif defined(SPIDER_4X)
