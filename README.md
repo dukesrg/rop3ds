@@ -23,14 +23,15 @@ MSET_4X|use MSET fw 4.x JP/US/EU gadgets|OK
 MSET_4X_DG|use MSET fw 4.x JP/US/EU downgraded gadgets|not tested
 MSET_6X|use MSET fw 6.x  JP/US/EU gadgets|OK
 SPIDER_4X|use Spider 1.7495.JP/US/EU gadgets|OK
-SPIDER_4X_CN|use Spider 1.7538.CN gadgets|NOT SUPPORTED
+SPIDER_42_CN|use Spider 1.7538.CN FW4.2 gadgets|not tested
+SPIDER_45_CN|use Spider 1.7538.CN FW4.5 gadgets|not tested
 SPIDER_4X_TW|use Spider 1.7538.KR gadgets|not tested
 SPIDER_4X_KR|use Spider 1.7538.TW gadgets|not tested
 SPIDER_5X|use Spider 1.7552.JP/US/EU gadgets|not tested
 SPIDER_5X_CN|use Spider 1.7552.CN gadgets|not tested
 SPIDER_5X_TW|use Spider 1.7552.KR gadgets|not tested
 SPIDER_5X_KR|use Spider 1.7552.TW gadgets|not tested
-SPIDER_9X|use Spider 1.7567.JP/US/EU gadgets|not tested
+SPIDER_9X|use Spider 1.7567.JP/US/EU gadgets|OK
 SPIDER_9X_CN|use Spider 1.7567.CN gadgets|not tested
 SPIDER_9X_TW|use Spider 1.7567.KR gadgets|not tested
 SPIDER_9X_KR|use Spider 1.7567.TW gadgets|not tested
