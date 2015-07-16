@@ -103,21 +103,45 @@
 		#define ROP_LOC				0x08B47400
 //		#define ROP_LOC				0x08CF2000
 	#endif
-#elif defined(SPIDER_4X_CN) //1.7538.CN ???
-	#warning ROP version not supported
-#elif defined(SPIDER_4X_KR) || defined(SPIDER_4X_TW) //1.7538.KR/TW
-	#define CALL_3				0x0011DD48				
-	#define CODE_TARGET			0x19592000
-	#define DMC				0x0010509F
+#elif defined(SPIDER_42_CN) || defined(SPIDER_4X_KR) || defined(SPIDER_4X_TW) //1.7538.CN/KR/TW
+	#if defined(SPIDER_42_CN)
+		#define CODE_TARGET			0x19593000
+	#else
+		#define CODE_TARGET			0x19592000
+	#endif
+	#define CALL_3				0x0011DD48
+	#define DMC				0x0010509F //CN?
 	#define LDMFD_SP_R4_5_PC		0x00101A44
 	#define POP_PC				0x001057B4
 	#define	POP_R0_PC			0x0010C2F8
-	#define POP_R4_5_6_PC			0x0010014C
+	#define POP_R4_5_6_PC			0x0010014C //CN?
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x00106598
-	#if defined(SPIDER_4X_KR) //1.7538.KR
-		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019C258
+	#if defined(SPIDER_42_CN) //1.7538.CN FW4.2
+		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD1C
+		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA40
+		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0023F048
+		#define SVC_0A_BX_LR			0x00104218
+    		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019B640
+		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022E334
+		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001674BC
+		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00167544
+		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B7F18
+		#define CALL_BX_LR			0x0023E4DC
+		#define CALL_BX_LR_2			0x00190118
+		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C469C
+		#define POP_R0_1_2_3_4_7_PC		0x001932FB
+		#define POP_R1_PC			0x00226B2C
+		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
+//		#define MAGIC				0x?
+	#elif defined(SPIDER_4X_KR) //1.7538.KR
+		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BCF0
+		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA14
+		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0023FF90
+		#define SVC_0A_BX_LR			0x00104218
+    		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019C258
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022F284
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001680F8
+		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168180
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B8B68
 		#define CALL_BX_LR			0x0023F424
 		#define CALL_BX_LR_2			0x00190D30
@@ -127,9 +151,14 @@
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE68
 		#define MAGIC				0x0012FE54
 	#elif defined(SPIDER_4X_TW) //1.7538.TW
-		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019C260
+		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD1C
+		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA40
+		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0023FFE4
+		#define SVC_0A_BX_LR			0x00104218
+    		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019C260
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022F2D8
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001680FC
+		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168184
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B8B70
 		#define CALL_BX_LR			0x0023F478
 		#define CALL_BX_LR_2			0x00190D34
@@ -139,6 +168,31 @@
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
 		#define MAGIC				0x0012FE80
 	#endif
+#elif defined(SPIDER_45_CN) //1.7538.CN FW4.5
+	#define CODE_TARGET			0x19593000
+	#define CALL_3				0x0011DD68
+//	#define DMC				0x?
+	#define LDMFD_SP_R4_5_PC		0x00101A40
+	#define POP_PC				0x001057E4
+	#define	POP_R0_PC			0x0010C324
+	#define	POP_R1_PC			0x00226AF8
+//	#define POP_R4_5_6_PC			0x?
+	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065C8
+	#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD30 
+	#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA54 
+	#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0023EFA0 
+	#define SVC_0A_BX_LR			0x0010420C 
+	#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019B138 
+	#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022E2B0 
+	#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00166FC8 
+	#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00167050 
+	#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C464C
+	#define CALL_BX_LR			0x0023E434
+	#define CALL_BX_LR_2			0x0018FC0C
+	#define POP_R0_1_2_3_4_7_PC		0x00112211
+	#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B7A10
+	#define SP_LR_LDMFD_SP_LR_PC		0x0012FEA4
+//	#define MAGIC				0x?
 #elif defined(SPIDER_5X) || defined(SPIDER_5X_CN) || defined(SPIDER_5X_KR) || defined(SPIDER_5X_TW)
 	#define CALL_3				0x0011DD80				
 	#define CODE_TARGET			0x19592000
@@ -150,9 +204,14 @@
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065C4
 //	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x0010CC4C
 	#if defined(SPIDER_5X_CN) //1.7552.CN
-		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019B7D0
+		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD48
+		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA6C
+		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0023F80C
+		#define SVC_0A_BX_LR			0x0010420C
+    		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019B7D0
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022EA5C
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x0016751C
+		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001675A4
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B80A8
 		#define CALL_BX_LR			0x0023ECA0
 		#define CALL_BX_LR_2			0x001902A8
@@ -162,9 +221,14 @@
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FEBC
 		#define MAGIC				0x0012FEA8
 	#elif defined(SPIDER_5X_KR) //1.7552.KR
-		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019CA78
+		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD1C
+		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA40
+		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x002407DC
+		#define SVC_0A_BX_LR			0x0010420C
+    		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019CA78
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FAC8
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001686FC
+		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168784
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B9350
 		#define CALL_BX_LR			0x0023FC70
 		#define CALL_BX_LR_2			0x0019154C
@@ -174,9 +238,14 @@
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE90
 		#define MAGIC				0x0012FE7C
 	#elif defined(SPIDER_5X_TW) //1.7552.TW
-		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019CAC0
+		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD48
+		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA6C
+		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x00240870
+		#define SVC_0A_BX_LR			0x0010420C
+    		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019CAC0
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FB5C
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00168744
+		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001687CC
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B9398
 		#define CALL_BX_LR			0x0023FD04
 		#define CALL_BX_LR_2			0x00191594
@@ -230,9 +299,14 @@
 	#define POP_R4_5_6_PC			0x0010014C
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065A8
 	#if defined(SPIDER_9X_CN) //1.7567.CN
-		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019B7E0
-		#define IFile_Open_LDMFD_SP_R4_5_6_7_PC	0x0022EA24
+		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD00
+		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA24
+		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0023F808
+		#define SVC_0A_BX_LR			0x001041F8
+    		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019B7E0
+		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022EA24
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00167540
+		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001675C8
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B80B8
 		#define CALL_BX_LR			0x0023ECA0
 		#define CALL_BX_LR_2			0x001902B8
@@ -242,9 +316,14 @@
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE74
 		#define MAGIC				0x0012FE60
 	#elif defined(SPIDER_9X_KR) //1.7567.KR
+		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BCD4
+		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012B9F8
+		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x002407D4
+		#define SVC_0A_BX_LR			0x001041F8
 		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019CA80
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FA8C
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00168718
+		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001687A0
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B9358
 		#define CALL_BX_LR			0x0023FC6C
 		#define CALL_BX_LR_2			0x00191554
@@ -254,9 +333,14 @@
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE48
 		#define MAGIC				0x0012FE34
 	#elif defined(SPIDER_9X_TW) //1.7567.TW
-		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019CAC8
+		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD00
+		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA24
+		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x00240868
+		#define SVC_0A_BX_LR			0x001041F8
+    		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019CAC8
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FB20
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00168760
+		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001687E8
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B93A0
 		#define CALL_BX_LR			0x0023FD00
 		#define CALL_BX_LR_2			0x0019159C
