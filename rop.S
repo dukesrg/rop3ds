@@ -11,6 +11,7 @@ _start:
 	rop_gx_texture_copy(BUFFER_LOC, CODE_TARGET, arm_code_end-arm_code)
 	rop_sleep(1000000000)
 	rop_jump_arm
+.align 4, GARBAGE
 arm_code:
 #ifdef ARM_CODE
 	#define S_(x)	#x

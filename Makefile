@@ -11,6 +11,9 @@ all: rop.dat LoadCode.dat
 %.elf: %.S
 	@$(CC) -c -o $@ $< $(ASFLAGS)
 
+bin2utf8:
+	gcc *.c -o bin2utf8.exe -std=c99
+
 .PHONY: clean
 clean:
 	@rm -rf *.elf *.dat
