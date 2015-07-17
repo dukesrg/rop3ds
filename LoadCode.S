@@ -23,7 +23,7 @@ _start:
 .org 0x158, GARBAGE
 	.word POP_PC, POP_PC
 FileName:
-#ifndef SPIDER_ARM_CODE
+#ifdef SPIDER_ARM_CODE
 	#define S_(x)	#x
 	#define S(x)	S_(x)
 	.string16 S(SPIDER_ARM_CODE)
