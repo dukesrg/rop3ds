@@ -7,7 +7,7 @@
 #define FILE_READ			0x00000001
 #define FILE_WRITE			0x00000002
 #define FILE_CREATE			0x00000004
-#define GARBAGE				0x00380038
+#define GARBAGE				0x00230040
 
 #if defined(MSET_4X) || defined(MSET_4X_DG)
 	#define ROP_LOC				0x002B0000
