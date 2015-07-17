@@ -18,17 +18,17 @@ _start:
 	rop_gx_texture_copy(BUFFER_LOC+SPIDER_ARM_CODE_OFFSET, CODE_TARGET, SPIDER_ARM_CODE_SIZE)
 	rop_sleep(1000000000)
 	rop_jump_arm
-.org 0x0F4, GARBAGE
+@.org 0x0F4, GARBAGE
+	.fill 9, 4, GARBAGE
 	.word ROP_LOC+_start+0x8C
-.org 0x128, GARBAGE
+@.org 0x128, GARBAGE
+	.fill 12, 4, GARBAGE
 	.word ROP_LOC+_start, 0, POP_PC
-.org 0x158, GARBAGE
-	.word POP_PC, POP_PC
+@.org 0x158, GARBAGE
+	.fill 9, 4, GARBAGE
+	.fill 2, 4, POP_PC
 FileName:
-#ifdef SPIDER_ARM_CODE
-	#define S_(x)	#x
-	#define S(x)	S_(x)
-	.string16 S(SPIDER_ARM_CODE)
-#endif
-.org 0x21C, GARBAGE
+	.string16 "dmc:/"
+@.org 0x21C, GARBAGE
+	.fill 44, 4, GARBAGE
 	.word MAGIC
