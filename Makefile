@@ -18,15 +18,16 @@ bin2utf8:
 	@./bin2utf8.exe $< >$@
 
 define makepayload
-	@make LoadCode.dat ASFLAGS="-D$(2) -DSPIDER_ARM_CODE_OFFSET=$(3)"
-	@make LoadCode.utf8
-	@sed -e "/$(4)'/{rLoadCode.utf8" -e "a\n" -e "}" -i $(1)
-	@sed -e "/$(4)'/{N" -e "s/\n//" -e "s/\(:'\).*\(',\{0,1\}\)\(.*\)/\1\3\2/" -e "s/n'/'/}" -i $(1)
+	@echo "generating $(2) ROP"
+	@make -s LoadCode.dat ASFLAGS="-D$(2) -DSPIDER_ARM_CODE_OFFSET=$(3)"
+	@make -s LoadCode.utf8
+	@sed -e "/$(4)'/{rLoadCode.utf8" -e "N}" -i $(1)
+	@sed "/$(4)'/s/\(.*\)\(\t\{3\}.*:'\)/\2\1/" -i $(1)
 	@rm LoadCode.dat
 	@rm LoadCode.utf8
 endef
 
-%.html: %.html.template bin2utf8
+%.html: index.html.template bin2utf8
 	@cp -f $< $@
 	$(call makepayload,$@,SPIDER_4X,0x120A0,17498)
 	$(call makepayload,$@,SPIDER_45_CN,0x220A0,17538C45)

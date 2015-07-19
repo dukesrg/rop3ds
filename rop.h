@@ -451,7 +451,7 @@
 	#define CODE_ENTRY			0x009D2000
 	#ifndef ROP_LOC
 		#if defined(SPIDER_ROP_LOC) //1st stage Spider only
-			#if (defined(SPIDER_4X_CN) || defined(SPIDER_5X_CN) || defined(SPIDER_9X_CN))
+			#if (defined(SPIDER_42_CN) || defined(SPIDER_45_CN) || defined(SPIDER_5X_CN) || defined(SPIDER_9X_CN))
 				#define ROP_LOC				0x08CC0000
 			#else
 				#define ROP_LOC				0x08CD0000
