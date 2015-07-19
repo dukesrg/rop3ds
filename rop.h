@@ -114,6 +114,7 @@
 	#define CALL_3				0x0011DD48
 	#define DMC				0x0010509F //CN?
 	#define LDMFD_SP_R4_5_PC		0x00101A44
+	#define LDR_R0_0_POP_R4_PC		0x0011BADC
 	#define POP_PC				0x001057B4
 	#define	POP_R0_PC			0x0010C2F8
 	#define POP_R3_PC			0x001050D4
@@ -140,7 +141,7 @@
 		#define POP_R1_PC			0x00226B2C
 		#define POP_R2_3_PC			0x0014C734
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
-//		#define MAGIC				0x?
+		#define MAGIC				0x0012FE80
 	#elif defined(SPIDER_4X_KR) //1.7538.KR
 		#define	HANDLE_PTR			0x003DA704
 		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BCF0
@@ -187,8 +188,9 @@
 #elif defined(SPIDER_45_CN) //1.7538.CN FW4.5
 	#define CODE_TARGET			0x19593000
 	#define CALL_3				0x0011DD68
-//	#define DMC				0x?
+	#define DMC				0x001050CF
 	#define LDMFD_SP_R4_5_PC		0x00101A40
+	#define LDR_R0_0_POP_R4_PC		0x0011BB04
 	#define POP_LR_PC			0x0012FEA8
 	#define POP_PC				0x001057E4
 	#define	POP_R0_PC			0x0010C324
@@ -214,12 +216,13 @@
 	#define POP_R0_1_2_3_4_7_PC		0x00112211
 	#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B7A10
 	#define SP_LR_LDMFD_SP_LR_PC		0x0012FEA4
-//	#define MAGIC				0x?
+	#define MAGIC				0x0012FE90
 #elif defined(SPIDER_5X) || defined(SPIDER_5X_CN) || defined(SPIDER_5X_KR) || defined(SPIDER_5X_TW)
 	#define CALL_3				0x0011DD80				
 	#define CODE_TARGET			0x19592000
 	#define DMC				0x001050CB
 	#define LDMFD_SP_R4_5_PC		0x00101A40
+	#define LDR_R0_0_POP_R4_PC		0x0011BB00
 	#define POP_PC				0x001057E0
 	#define	POP_R0_PC			0x0010C320
 	#define POP_R1_2_3_PC			0x00103DC0
@@ -298,7 +301,6 @@
 		#define CALL_BX_LR			0x0023FFEC
 		#define CALL_BX_LR_2			0x001914FC
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C5AC0
-		#define LDR_R0_0_POP_R4_PC		0x0011BB00
 		#define POP_LR_PC			0x001303A4
 		#define POP_R0_1_2_3_4_PC		0x0012A3D4
 		#define POP_R0_1_2_3_4_7_PC		0x001946E3
@@ -326,6 +328,7 @@
 	#define CODE_TARGET			0x19592000
 	#define DMC				0x001050B3
 	#define LDMFD_SP_R4_5_PC		0x00101A34
+	#define LDR_R0_0_POP_R4_PC		0x0011BACC
 	#define POP_PC				0x001057C4
 	#define	POP_R0_PC			0x0010C2FC
 	#define POP_R1_2_3_PC			0x00103DAC
@@ -403,7 +406,6 @@
 		#define CALL_BX_LR			0x0023FFE8
 		#define CALL_BX_LR_2			0x00191504
 		#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C5AE0
-		#define LDR_R0_0_POP_R4_PC		0x0011BACC
 		#define POP_LR_PC			0x0013035C
 		#define POP_R0_1_2_3_4_PC		0x0010B5B4
 		#define POP_R0_1_2_3_4_7_PC		0x001946EB

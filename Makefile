@@ -15,7 +15,7 @@ bin2utf8:
 	@gcc *.c -o bin2utf8.exe -std=c99
 
 %.utf8: %.dat bin2utf8
-	@bin2utf8.exe $< >$@
+	@./bin2utf8.exe $< >$@
 
 define makepayload
 	@make LoadCode.dat ASFLAGS="-D$(2) -DSPIDER_ARM_CODE_OFFSET=$(3)"
@@ -29,8 +29,8 @@ endef
 %.html: %.html.template bin2utf8
 	@cp -f $< $@
 	$(call makepayload,$@,SPIDER_4X,0x120A0,17498)
-	$(call makepayload,$@,SPIDER_45_CN,0x220A0,17538C)
-	$(call makepayload,$@,SPIDER_42_CN,0x1E0A0,17538C)
+	$(call makepayload,$@,SPIDER_45_CN,0x220A0,17538C45)
+	$(call makepayload,$@,SPIDER_42_CN,0x1E0A0,17538C42)
 	$(call makepayload,$@,SPIDER_4X_KR,0x2E0A0,17538K)
 	$(call makepayload,$@,SPIDER_4X_TW,0x3A0A0,17538T)
 	$(call makepayload,$@,SPIDER_5X,0x160A0,17552)
