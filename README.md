@@ -6,16 +6,18 @@ LoadCode.S - 1st stage Spider ARM code loader example
 
 rop.S - 2nd stage ARM code loader example
 
+index.html.template - a template for spider webkit exploit
+
 How to build
 -----
-make LoadCode.dat ASFLAGS="-DSPIDER_9 -DSPIDER_ARM_CODE=dmc:/code.bin" - build Spider 1st stage for version 1.7567 (fw9) and set ARM payload filename to code.bin, located on SD card
+make index.html - build index.html with all regions 1st stage loader
+
+make LoadCode.dat ASFLAGS="-DSPIDER_9" - build Spider 1st stage for version 1.7567 (fw9)
 
 make rop.dat ASFLAGS="-DSPIDER_9 -DARM_CODE=arm.bin" - build for spider version 1.7567 (fw9) and include arm.bin as ARM payload
 Available option
 -----
 ARM_CODE=arm.bin - include file content as ARM payload (for rop.S)
-
-SPIDER_ARM_CODE=dmc:/code.bin - set Spider ARM payload filename (for LoadCode.S)
 
 SPIDER_ARM_CODE_OFFSET=0x100 - set Spider ARM payload offset in file (for LoadCode.S)
 
@@ -34,10 +36,10 @@ SPIDER_4X_KR|use Spider 1.7538.TW gadgets|not tested
 SPIDER_5X|use Spider 1.7552.JP/US/EU gadgets|OK
 SPIDER_5X_CN|use Spider 1.7552.CN gadgets|not tested
 SPIDER_5X_TW|use Spider 1.7552.KR gadgets|not tested
-SPIDER_5X_KR|use Spider 1.7552.TW gadgets|not tested
+SPIDER_5X_KR|use Spider 1.7552.TW gadgets|OK
 SPIDER_9X|use Spider 1.7567.JP/US/EU gadgets|OK
-SPIDER_9X_CN|use Spider 1.7567.CN gadgets|not tested
+SPIDER_9X_CN|use Spider 1.7567.CN gadgets|OK
 SPIDER_9X_TW|use Spider 1.7567.KR gadgets|not tested
-SPIDER_9X_KR|use Spider 1.7567.TW gadgets|not tested
+SPIDER_9X_KR|use Spider 1.7567.TW gadgets|OK
 
 
