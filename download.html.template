@@ -74,7 +74,6 @@ function z(){
 		m=[];
 		for(j=0;j<410;j++){
 			a=Array(j);
-			a=Array(j);
 			if(384<j&&j<388){
 				for(k=0,i=(j-385)*5;k<5;a[k++]=q[i++]);
 			}else{
