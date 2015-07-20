@@ -1,7 +1,6 @@
 	.arm
 	.text
 
-#define SPIDER_ROP_LOC
 #include "rop.h"
 
 #ifndef SPIDER_ARM_CODE_SIZE
