@@ -43,6 +43,28 @@ endef
 	$(call makepayload,$@,SPIDER_9X_KR,0x360A0,17567K)
 	$(call makepayload,$@,SPIDER_9X_TW,0x420A0,17567T)
 
+define makedatpayload
+	@echo "generating $(1) ROP"
+	@make -s LoadCode.dat ASFLAGS="-D$(1) -DSPIDER_ARM_CODE_OFFSET=$(2)"
+	@mv LoadCode.dat $(3).dat
+endef
+
+datpayload: download.html.template
+	$(call makedatpayload,SPIDER_4X,0x120A0,17498)
+	$(call makedatpayload,SPIDER_45_CN,0x220A0,17538C45)
+	$(call makedatpayload,SPIDER_42_CN,0x1E0A0,17538C42)
+	$(call makedatpayload,SPIDER_4X_KR,0x2E0A0,17538K)
+	$(call makedatpayload,SPIDER_4X_TW,0x3A0A0,17538T)
+	$(call makedatpayload,SPIDER_5X,0x160A0,17552)
+	$(call makedatpayload,SPIDER_5X_CN,0x260A0,17552C)
+	$(call makedatpayload,SPIDER_5X_KR,0x320A0,17552K)
+	$(call makedatpayload,SPIDER_5X_TW,0x3E0A0,17552T)
+	$(call makedatpayload,SPIDER_9X,0x1A0A0,17567)
+	$(call makedatpayload,SPIDER_9X_CN,0x2A0A0,17567C)
+	$(call makedatpayload,SPIDER_9X_KR,0x360A0,17567K)
+	$(call makedatpayload,SPIDER_9X_TW,0x420A0,17567T)
+	@cp -f $< download.html
+
 .PHONY: clean
 clean:
 	@rm -rf *.elf *.dat *.rop *.exe *.utf8 *.html
