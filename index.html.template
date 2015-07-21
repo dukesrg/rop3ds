@@ -1,5 +1,5 @@
 <html><head><script>
-d=document,r=parent,w=window;
+d=document,r=parent,w=window,n=navigator.userAgent;
 if(r==w){
 	l='arm.dat',u=decodeURI(d.URL),g=u.split('?');
 	if(g.length>1){
@@ -8,6 +8,13 @@ if(r==w){
 	}
 	d.title='Load '+l;
 	w.onload=function(){
+		if(n.indexOf('1.7538.CN')!=-1){
+			if(confirm('系统版本4.2-4.4选择OK，系统版本4.5选择取消。')){
+				n.replace('.CN','.CN.42');
+			}else{
+				n.replace('.CN','.CN.45');
+			}
+		}
 		d.body.childNodes[0].innerHTML=l+' loading<iframe height=0 src=#/>';
 	}
 }else{
@@ -21,15 +28,7 @@ if(r==w){
 	}
 }
 function z(){
-	n=navigator.userAgent;
 	if(n.indexOf('Nintendo 3DS')!=-1){
-		if(n.indexOf('1.7538.CN')!=-1){
-			if(confirm('系统版本4.2-4.4选择OK，系统版本4.5选择取消。')){
-				n.replace('.CN','.CN.42');
-			}else{
-				n.replace('.CN','.CN.45');
-			}
-		}
 		m=[],q={'17412':'',
 			'17455':'',
 			'17498':'',
