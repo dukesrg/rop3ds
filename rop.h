@@ -432,13 +432,13 @@
 	#define rop_file_open(handle, filename, mode)	.word POP_R0_PC, handle, POP_R1_2_3_PC, ROP_LOC+filename, mode, GARBAGE, IFile_Open + 4, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC
 	#define rop_flush_data_cache(buffer, size) .word POP_R0_PC, HANDLE_PTR, POP_R1_2_3_PC, KPROCESS_HANDLE, buffer, size, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC + 4, GARBAGE, GARBAGE, GARBAGE
 	#if defined(MSET_6X)
-		#define THIS				0x00279000
+		#define THIS				0x00287000
 		#define rop_file_read(handle, readcount, buffer, size) .word POP_R0_PC, handle, POP_R1_2_3_PC, readcount, buffer, size, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC + 4, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
 		#define rop_file_write(handle, writecount, buffer, size) .word POP_R1_2_3_PC, GARBAGE, POP_PC, GARBAGE, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, writecount, buffer, size, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
 		#define rop_memcpy(dst, src, size) .word POP_R0_PC, dst, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR + 4, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE
 		#define rop_sleep(ns) .word POP_R0_PC, ns, POP_R1_2_3_PC, 0, POP_PC, GARBAGE, POP_R4_LR_BX_R2, GARBAGE, POP_PC, SVC_0A_BX_LR 
 	#else
-		#define THIS				0x00287000
+		#define THIS				0x00279000
 		#define rop_file_read(handle, readcount, buffer, size) .word POP_R2_PC, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, readcount, buffer, size, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
 		#define rop_file_write(handle, writecount, buffer, size) .word POP_R2_PC, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, writecount, buffer, size, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
 		#define rop_memcpy(dst, src, size) .word POP_R2_PC, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_PC, dst, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
