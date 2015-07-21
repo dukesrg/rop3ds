@@ -1,6 +1,5 @@
 <html><head><script>
-d=document,r=parent,w=window;
-n=navigator.userAgent;
+d=document,r=parent,w=window,n=navigator.userAgent;
 if(r==w){
 	l='arm.dat',u=decodeURI(d.URL),g=u.split('?');
 	if(g.length>1){
