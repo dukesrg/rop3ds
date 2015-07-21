@@ -3,13 +3,6 @@
 
 #include "rop.h"
 
-#undef THIS
-#if defined(MSET_4X) || defined(MSET_4X_DG)
-	#define THIS 0x00279000
-#elif defined(MSET_6X)
-	#define THIS 0x00287000
-#endif
-
 #ifndef MSET_ARM_CODE_SIZE
 	#define MSET_ARM_CODE_SIZE 0x00004000
 #endif
