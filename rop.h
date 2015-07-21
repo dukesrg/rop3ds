@@ -455,11 +455,11 @@
 			#define ROP_LOC				0x08CD0000
 		#endif
 	#endif
-	#if defined(SPIDER_9X)
-		#define BUFFER_LOC			0x18370000
-	#else
+//	#if defined(SPIDER_9X)
+//		#define BUFFER_LOC			0x18370000
+//	#else
 		#define BUFFER_LOC			0x18410000
-	#endif
+//	#endif
 	#define rop_flush_data_cache(buffer, size) .word POP_LR_PC, POP_PC, POP_R0_PC, HANDLE_PTR, POP_R1_2_3_PC, KPROCESS_HANDLE, buffer, size, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC
 	#define rop_fs_mount(drive)		.word POP_LR_PC, POP_PC, POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC
 	#define rop_sleep(ns)			.word POP_LR_PC, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, SVC_0A_BX_LR

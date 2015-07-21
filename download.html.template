@@ -8,13 +8,7 @@ if(r==w){
 	}
 	d.title='Load '+l;
 	w.onload=function(){
-		if(n.indexOf('1.7538.CN')!=-1){
-			if(confirm('系统版本4.2-4.4选择OK，系统版本4.5选择取消。')){
-				n.replace('.CN','.CN.42');
-			}else{
-				n.replace('.CN','.CN.45');
-			}
-		}
+		if(n.indexOf('1.7538.CN')>=0)n=n.replace('.CN',confirm('系统版本4.2-4.4选择OK，系统版本4.5选择取消。')?'.CN.42':'.CN.45');
 		var h=d.body.childNodes[0];
 		var v=n.split('/').pop().replace(/[^\dCKT]/g,'')+'.dat';
 		h.innerHTML='Downloading payload '+v+': ';
@@ -69,7 +63,7 @@ if(r==w){
 	}
 }
 function z(){
-	if(n.indexOf('Nintendo 3DS')!=-1){
+	if(n.indexOf('Nintendo 3DS')>=0){
 		m=[];
 		for(j=0;j<410;j++){
 			a=Array(j);
