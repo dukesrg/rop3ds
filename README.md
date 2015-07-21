@@ -4,6 +4,8 @@ rop.h - gadget collection for various ROP versions
 
 LoadCode.S - 1st stage Spider ARM code loader example
 
+DownLoad.S - 1+1 stage loader example (experimental)
+
 rop.S - 2nd stage ARM code loader example
 
 index.html.template - a template for spider webkit exploit
@@ -20,8 +22,6 @@ Available option
 ARM_CODE=arm.bin - include file content as ARM payload (for rop.S)
 
 SPIDER_ARM_CODE_OFFSET=0x100 - set Spider ARM payload offset in file (for LoadCode.S)
-
-SPIDER_ROP_LOC - force 1st stage Spider ROP code location (already defined in LoadCode.S)
 
 Define value|Description|Status
 ----------|----------|----------

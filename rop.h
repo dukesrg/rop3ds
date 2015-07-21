@@ -102,10 +102,8 @@
 	#define DMC				0x002A5F27
 	#define CODE_TARGET			0x192D3000
 	#define MAGIC				0x002D6A1C
-	#ifdef SPIDER_ROP_LOC
-		#define ROP_LOC				0x08B47400
-//		#define ROP_LOC				0x08CF2000
-	#endif
+	#define ROP_LOC				0x08B47400
+//	#define ROP_LOC				0x08CF2000
 #elif defined(SPIDER_42_CN) || defined(SPIDER_4X_KR) || defined(SPIDER_4X_TW) //1.7538.CN/KR/TW
 	#if defined(SPIDER_42_CN)
 		#define CODE_TARGET			0x19593000
@@ -320,11 +318,9 @@
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168748
 		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x00240B58
 		#define MAGIC				0x0013038C
-		#ifdef SPIDER_ROP_LOC
-			#define ROP_LOC				0x08B85400
-//			#define ROP_LOC				0x088B5400
-//			#define ROP_LOC				0x08CF208C
-		#endif
+		#define ROP_LOC				0x08B85400
+//		#define ROP_LOC				0x088B5400
+//		#define ROP_LOC				0x08CF208C
 	#endif
 #elif defined(SPIDER_9X) || defined(SPIDER_9X_CN) || defined(SPIDER_9X_KR) || defined(SPIDER_9X_TW)
 	#define CALL_3				0x0011DD48				
@@ -425,10 +421,8 @@
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168764
 		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x00240B50
 		#define MAGIC				0x00130344
-		#ifdef SPIDER_ROP_LOC
-			#define ROP_LOC				0x08B88400
-//			#define ROP_LOC				0x08CF2000
-		#endif
+		#define ROP_LOC				0x08B88400
+//		#define ROP_LOC				0x08CF2000
 	#endif
 #else
 	#error ROP version not defined
@@ -453,14 +447,10 @@
 #else //Spider
 	#define CODE_ENTRY			0x009D2000
 	#ifndef ROP_LOC
-		#if defined(SPIDER_ROP_LOC) //1st stage Spider only
-			#if (defined(SPIDER_42_CN) || defined(SPIDER_45_CN) || defined(SPIDER_5X_CN) || defined(SPIDER_9X_CN))
-				#define ROP_LOC				0x08CC0000
-			#else
-				#define ROP_LOC				0x08CD0000
-			#endif
-		#else //2nd stage
-			#define ROP_LOC				0x08F01000
+		#if (defined(SPIDER_42_CN) || defined(SPIDER_45_CN) || defined(SPIDER_5X_CN) || defined(SPIDER_9X_CN))
+			#define ROP_LOC				0x08CC0000
+		#else
+			#define ROP_LOC				0x08CD0000
 		#endif
 	#endif
 	#if defined(SPIDER_9X)
