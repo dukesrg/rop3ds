@@ -37,7 +37,7 @@ _start:
 @.org 0x21C
 	.word MAGIC
 
-	rop_flush_data_cache(BUFFER_LOC, CODE_SIZE)
+	rop_flush_data_cache(BUFFER_LOC+arm_code-0x300, CODE_SIZE)
 	rop_gx_texture_copy(BUFFER_LOC+arm_code-0x300, CODE_TARGET, CODE_SIZE)
 	rop_sleep(1000000000)
 	rop_jump_arm
