@@ -103,11 +103,6 @@
 	#define ROP_LOC				0x08B47400
 //	#define ROP_LOC				0x08CF2000
 #elif defined(SPIDER_42_CN) || defined(SPIDER_4X_KR) || defined(SPIDER_4X_TW) //1.7538.CN/KR/TW
-	#if defined(SPIDER_42_CN)
-		#define CODE_TARGET			0x19593000
-	#else
-		#define CODE_TARGET			0x19592000
-	#endif
 	#define CALL_3				0x0011DD48
 	#define DMC				0x0010509F //CN?
 	#define LDMFD_SP_R4_5_PC		0x00101A44
@@ -139,6 +134,7 @@
 		#define POP_R1_PC			0x00226B2C
 		#define POP_R2_3_PC			0x0014C734
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
+		#define CODE_TARGET			0x19357000
 		#define MAGIC				0x0012FE80
 	#elif defined(SPIDER_4X_KR) //1.7538.KR
 		#define	HANDLE_PTR			0x003DA704
@@ -160,6 +156,7 @@
 		#define POP_R1_PC			0x00227A28
 		#define POP_R2_3_PC			0x0014D2D8
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE68
+		#define CODE_TARGET			0x19255000
 		#define MAGIC				0x0012FE54
 	#elif defined(SPIDER_4X_TW) //1.7538.TW
 		#define	HANDLE_PTR			0x003DA704
@@ -181,10 +178,10 @@
 		#define POP_R1_PC			0x00227A64
 		#define POP_R2_3_PC			0x0014D29C
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
+		#define CODE_TARGET			0x19355000
 		#define MAGIC				0x0012FE80
 	#endif
 #elif defined(SPIDER_45_CN) //1.7538.CN FW4.5
-	#define CODE_TARGET			0x19593000
 	#define CALL_3				0x0011DD68
 	#define DMC				0x001050CF
 	#define LDMFD_SP_R4_5_PC		0x00101A40
@@ -215,6 +212,7 @@
 	#define POP_R0_1_2_3_4_7_PC		0x00112211
 	#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B7A10
 	#define SP_LR_LDMFD_SP_LR_PC		0x0012FEA4
+	#define CODE_TARGET			0x19357000
 	#define MAGIC				0x0012FE90
 #elif defined(SPIDER_5X) || defined(SPIDER_5X_CN) || defined(SPIDER_5X_KR) || defined(SPIDER_5X_TW)
 	#define CALL_3				0x0011DD80				
@@ -455,11 +453,7 @@
 			#define ROP_LOC				0x08CD0000
 		#endif
 	#endif
-//	#if defined(SPIDER_9X)
-//		#define BUFFER_LOC			0x18370000
-//	#else
-		#define BUFFER_LOC			0x18410000
-//	#endif
+	#define BUFFER_LOC			0x18410000
 	#define rop_flush_data_cache(buffer, size) .word POP_LR_PC, POP_PC, POP_R0_PC, HANDLE_PTR, POP_R1_2_3_PC, KPROCESS_HANDLE, buffer, size, GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC
 	#define rop_fs_mount(drive)		.word POP_LR_PC, POP_PC, POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC
 	#define rop_sleep(ns)			.word POP_LR_PC, POP_PC, POP_R0_PC, ns, POP_R1_PC, 0, SVC_0A_BX_LR
