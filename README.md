@@ -35,7 +35,7 @@ SPIDER_4X_TW|use Spider 1.7538.KR gadgets|not tested
 SPIDER_4X_KR|use Spider 1.7538.TW gadgets|OK
 SPIDER_5X|use Spider 1.7552.JP/US/EU gadgets|OK
 SPIDER_5X_CN|use Spider 1.7552.CN gadgets|not tested
-SPIDER_5X_TW|use Spider 1.7552.KR gadgets|not tested
+SPIDER_5X_TW|use Spider 1.7552.KR gadgets|OK
 SPIDER_5X_KR|use Spider 1.7552.TW gadgets|OK
 SPIDER_9X|use Spider 1.7567.JP/US/EU gadgets|OK
 SPIDER_9X_CN|use Spider 1.7567.CN gadgets|OK
