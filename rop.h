@@ -99,10 +99,14 @@
 	#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00311D90
 	#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0029BF60
 	#define DMC				0x002A5F27
-	#define CODE_TARGET			0x192D3000
 	#define MAGIC				0x002D6A1C
 	#define ROP_LOC				0x08B47400
 //	#define ROP_LOC				0x08CF2000
+	#ifdef SPIDER_DG
+		#define CODE_TARGET			0x192D3000
+	#else
+		#define CODE_TARGET			0x195D1000
+	#endif
 #elif defined(SPIDER_42_CN) || defined(SPIDER_4X_KR) || defined(SPIDER_4X_TW) //1.7538.CN/KR/TW
 	#define CALL_3				0x0011DD48
 	#define DMC				0x0010509F //CN?
@@ -135,8 +139,12 @@
 		#define POP_R1_PC			0x00226B2C
 		#define POP_R2_3_PC			0x0014C734
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
-		#define CODE_TARGET			0x19357000
 		#define MAGIC				0x0012FE80
+		#ifdef SPIDER_DG
+			#define CODE_TARGET			0x19357000
+		#else
+			#define CODE_TARGET			0x19593000
+		#endif
 	#elif defined(SPIDER_4X_KR) //1.7538.KR
 		#define	HANDLE_PTR			0x003DA704
 		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BCF0
@@ -157,8 +165,10 @@
 		#define POP_R1_PC			0x00227A28
 		#define POP_R2_3_PC			0x0014D2D8
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE68
-		#define CODE_TARGET			0x19255000
 		#define MAGIC				0x0012FE54
+		#ifdef SPIDER_DG
+			#define CODE_TARGET			0x19255000
+		#endif
 	#elif defined(SPIDER_4X_TW) //1.7538.TW
 		#define	HANDLE_PTR			0x003DA704
 		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD1C
@@ -179,8 +189,10 @@
 		#define POP_R1_PC			0x00227A64
 		#define POP_R2_3_PC			0x0014D29C
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
-		#define CODE_TARGET			0x19355000
 		#define MAGIC				0x0012FE80
+		#ifdef SPIDER_DG
+			#define CODE_TARGET			0x19355000
+		#endif
 	#endif
 #elif defined(SPIDER_45_CN) //1.7538.CN FW4.5
 	#define CALL_3				0x0011DD68
@@ -213,11 +225,14 @@
 	#define POP_R0_1_2_3_4_7_PC		0x00112211
 	#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B7A10
 	#define SP_LR_LDMFD_SP_LR_PC		0x0012FEA4
-	#define CODE_TARGET			0x19357000
 	#define MAGIC				0x0012FE90
+	#ifdef SPIDER_DG
+		#define CODE_TARGET			0x19357000
+	#else
+		#define CODE_TARGET			0x19593000
+	#endif
 #elif defined(SPIDER_5X) || defined(SPIDER_5X_CN) || defined(SPIDER_5X_KR) || defined(SPIDER_5X_TW)
 	#define CALL_3				0x0011DD80				
-	#define CODE_TARGET			0x19592000
 	#define DMC				0x001050CB
 	#define LDMFD_SP_R4_5_PC		0x00101A40
 	#define LDR_R0_0_POP_R4_PC		0x0011BB00
@@ -321,7 +336,6 @@
 	#endif
 #elif defined(SPIDER_9X) || defined(SPIDER_9X_CN) || defined(SPIDER_9X_KR) || defined(SPIDER_9X_TW)
 	#define CALL_3				0x0011DD48				
-	#define CODE_TARGET			0x19592000
 	#define DMC				0x001050B3
 	#define LDMFD_SP_R4_5_PC		0x00101A34
 	#define LDR_R0_0_POP_R4_PC		0x0011BACC
@@ -446,6 +460,9 @@
 #else //Spider
 	#define CODE_ENTRY			0x009D2000
 	#define THIS				0x0978CC00
+	#ifndef CODE_TARGET
+		#define CODE_TARGET			0x19592000
+	#endif
 	//#define THIS				0x08F10000
 	#ifndef ROP_LOC
 		#if (defined(SPIDER_42_CN) || defined(SPIDER_45_CN) || defined(SPIDER_5X_CN) || defined(SPIDER_9X_CN))
