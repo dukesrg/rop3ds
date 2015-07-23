@@ -162,7 +162,7 @@
 	#elif defined(SPIDER_4X_TW) //1.7538.TW
 		#define	HANDLE_PTR			0x003DA704
 		#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0012BD1C
-		#define nn__gxlow__CTR__detail__GetInterruptReceiver	0x
+		#define nn__gxlow__CTR__detail__GetInterruptReceiver	0x003D7C40 
 		#define nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC	0x0012BA40
 		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0023FFE4
 		#define SVC_0A_BX_LR			0x00104218
