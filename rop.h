@@ -103,9 +103,9 @@
 	#define ROP_LOC				0x08B47400
 //	#define ROP_LOC				0x08CF2000
 	#ifdef SPIDER_DG
-		#define CODE_TARGET			0x192D3000
-	#else
 		#define CODE_TARGET			0x195D1000
+	#else
+		#define CODE_TARGET			0x192D3000
 	#endif
 #elif defined(SPIDER_42_CN) || defined(SPIDER_4X_KR) || defined(SPIDER_4X_TW) //1.7538.CN/KR/TW
 	#define CALL_3				0x0011DD48
@@ -141,9 +141,9 @@
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
 		#define MAGIC				0x0012FE80
 		#ifdef SPIDER_DG
-			#define CODE_TARGET			0x19357000
-		#else
 			#define CODE_TARGET			0x19593000
+		#else
+			#define CODE_TARGET			0x19357000
 		#endif
 	#elif defined(SPIDER_4X_KR) //1.7538.KR
 		#define	HANDLE_PTR			0x003DA704
@@ -166,7 +166,7 @@
 		#define POP_R2_3_PC			0x0014D2D8
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE68
 		#define MAGIC				0x0012FE54
-		#ifdef SPIDER_DG
+		#ifndef SPIDER_DG
 			#define CODE_TARGET			0x19255000
 		#endif
 	#elif defined(SPIDER_4X_TW) //1.7538.TW
@@ -190,7 +190,7 @@
 		#define POP_R2_3_PC			0x0014D29C
 		#define SP_LR_LDMFD_SP_LR_PC		0x0012FE94
 		#define MAGIC				0x0012FE80
-		#ifdef SPIDER_DG
+		#ifndef SPIDER_DG
 			#define CODE_TARGET			0x19355000
 		#endif
 	#endif
@@ -227,9 +227,9 @@
 	#define SP_LR_LDMFD_SP_LR_PC		0x0012FEA4
 	#define MAGIC				0x0012FE90
 	#ifdef SPIDER_DG
-		#define CODE_TARGET			0x19357000
-	#else
 		#define CODE_TARGET			0x19593000
+	#else
+		#define CODE_TARGET			0x19357000
 	#endif
 #elif defined(SPIDER_5X) || defined(SPIDER_5X_CN) || defined(SPIDER_5X_KR) || defined(SPIDER_5X_TW)
 	#define CALL_3				0x0011DD80				
