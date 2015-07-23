@@ -23,6 +23,8 @@ ARM_CODE=arm.bin - include file content as ARM payload (for rop.S)
 
 SPIDER_ARM_CODE_OFFSET=0x100 - set Spider ARM payload offset in file (for LoadCode.S)
 
+SPIDER_DG - force using gadgets for Spider 4.x on fw 5+ (offline updated consoles)
+
 Define value|Description|Status
 ----------|----------|----------
 MSET_4X|use MSET fw 4.x gadgets (unsafe for 2DS)|OK
