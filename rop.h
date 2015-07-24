@@ -32,10 +32,10 @@
 	#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001B3B50
 	#define SVC_0A_BX_LR			0x001AEA50
 	#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x001BFA60
-	#if defined(MSET_4X)
-		#define CODE_TARGET			0x17FAD000
-	#else
+	#if defined(MSET_4X_DG) || defined(MSET_DG)
 		#define CODE_TARGET			0x17EB0000
+	#else
+		#define CODE_TARGET			0x17FAD000
 	#endif
 #elif defined(MSET_6X)
 	#define ROP_LOC				0x00290000
