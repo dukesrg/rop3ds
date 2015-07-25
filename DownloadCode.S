@@ -38,7 +38,15 @@ _start:
 
 	rop_flush_data_cache(BUFFER_LOC+arm_code-0x300, CODE_SIZE)
 	rop_gx_texture_copy(BUFFER_LOC+arm_code-0x300, CODE_TARGET, CODE_SIZE)
+	rop_flush_data_cache(BUFFER_LOC, 0x38400*2)
+	rop_gx_texture_copy(BUFFER_LOC, 0x1F48F000, 0x38400*2)
 	rop_sleep(1000000000)
+
+@	rop_sleep(1000000000)
+@	rop_flush_data_cache(BUFFER_LOC, 0x38400)
+@	rop_gx_texture_copy(BUFFER_LOC, 0x1F4C7800, 0x38400)
+@	rop_sleep(1000000000)
+
 	rop_jump_arm
 
 .org 0x300

@@ -53,8 +53,8 @@ compat.html: index.html.template bin2utf8
 
 define makedatpayload
 	@echo "generating $(2) ROP"
-	@make -s LoadCode.dat ASFLAGS="-D$(2) -DSPIDER_ARM_CODE_OFFSET=$(3) -D$(4)"
-	@mv LoadCode.dat $(1).dat
+	@make -s DownloadCode.dat ASFLAGS="-D$(2) -DSPIDER_ARM_CODE_OFFSET=$(3) -D$(4)"
+	@mv DownloadCode.dat $(1).dat
 endef
 
 datpayload: download.html.template
