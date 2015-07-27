@@ -51,6 +51,30 @@ compat.html: index.html.template bin2utf8
 	$(call makepayload,17538K,SPIDER_4X_KR,0,SPIDER_DG,$@)
 	$(call makepayload,17538T,SPIDER_4X_TW,0,SPIDER_DG,$@)
 
+define makebigpayload
+	@echo "generating $(2) ROP"
+	@./bin2utf8.exe $(1).rop >rop.utf8
+	@sed -e "/$(1)'/{rrop.utf8" -e "N}" -i $(5)
+	@sed "/$(1)'/s/\(.*\)\(\t\{3\}.*:'\)/\2\1/" -i $(5)
+	@rm rop.utf8
+endef
+
+big.html: index.html.template bin2utf8
+	@cp -f $< $@
+	$(call makebigpayload,17498,SPIDER_4X,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17538C45,SPIDER_45_CN,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17538C42,SPIDER_42_CN,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17538K,SPIDER_4X_KR,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17538T,SPIDER_4X_TW,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17552,SPIDER_5X,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17552C,SPIDER_5X_CN,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17552K,SPIDER_5X_KR,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17552T,SPIDER_5X_TW,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17567,SPIDER_9X,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17567C,SPIDER_9X_CN,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17567K,SPIDER_9X_KR,0,NO_SPIDER_DG,$@)
+	$(call makebigpayload,17567T,SPIDER_9X_TW,0,NO_SPIDER_DG,$@)
+
 define makedatpayload
 	@echo "generating $(2) ROP"
 	@make -s DownloadCode.dat ASFLAGS="-D$(2) -DSPIDER_ARM_CODE_OFFSET=$(3) -D$(4)"
