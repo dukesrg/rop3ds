@@ -30,6 +30,8 @@ Define value|Description|Status
 MSET_4X|use MSET fw 4.x gadgets (unsafe for 2DS)|OK
 MSET_4X_DG|use MSET fw 4.x downgraded gadgets (unsafe for 2DS)|OK
 MSET_6X|use MSET fw 6.x native and downgraded gadgets|OK
+SPIDER_20|use Spider 1.7412.JP/US/EU gadgets|WIP
+SPIDER_21|use Spider 1.7455.JP/US/EU gadgets|WIP
 SPIDER_4X|use Spider 1.7495.JP/US/EU gadgets|OK
 SPIDER_42_CN|use Spider 1.7538.CN fw 4.2 gadgets|need testing
 SPIDER_45_CN|use Spider 1.7538.CN fw 4.5 gadgets|OK
