@@ -1,7 +1,7 @@
 #define DLPLAY_CODE_LOC_VA		0x00192800
 #define DLPLAY_NSSHANDLE_LOC_VA		0x001A5200
 #define KPROCESS_HANDLE			0xFFFF8001
-#define GX_SetTextureCopy		0x00000004
+#define GX_SetTextureCopyCmd	0x00000004
 #define FILE_READ			0x00000001
 #define FILE_WRITE			0x00000002
 #define FILE_CREATE			0x00000004
@@ -146,6 +146,9 @@
 	#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x002FC8E4
 	#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00311D90
 	#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0029BF60
+	#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC 0x002C62E4
+	#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00344B84
+	#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC 0x002B7ECC
 	#define DMC				0x002A5F27
 	#define MAGIC				0x002D6A1C
 	#define ROP_LOC				0x08B47400
@@ -178,6 +181,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022E334
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001674BC
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00167544
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00190118
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E0C
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B7F18
 		#define CALL_BX_LR			0x0023E4DC
 		#define CALL_BX_LR_2			0x00190118
@@ -204,6 +210,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022F284
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001680F8
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168180
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00190D30
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E0C
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B8B68
 		#define CALL_BX_LR			0x0023F424
 		#define CALL_BX_LR_2			0x00190D30
@@ -228,6 +237,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022F2D8
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001680FC
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168184
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00190D34
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E0C
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B8B70
 		#define CALL_BX_LR			0x0023F478
 		#define CALL_BX_LR_2			0x00190D34
@@ -267,6 +279,9 @@
 	#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022E2B0 
 	#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00166FC8 
 	#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00167050 
+	#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD68
+	#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x0018FC0C
+	#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E34
 	#define LDMFD_SP_R4_5_6_LR_BX_R12	0x002C464C
 	#define CALL_BX_LR			0x0023E434
 	#define CALL_BX_LR_2			0x0018FC0C
@@ -303,6 +318,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022EA5C
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x0016751C
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001675A4
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD80
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x001902A8
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E30
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B80A8
 		#define CALL_BX_LR			0x0023ECA0
 		#define CALL_BX_LR_2			0x001902A8
@@ -323,6 +341,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FAC8
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001686FC
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168784
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD80
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x0019154C
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E30
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B9350
 		#define CALL_BX_LR			0x0023FC70
 		#define CALL_BX_LR_2			0x0019154C
@@ -343,6 +364,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FB5C
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00168744
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001687CC
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD80
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00191594
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E30
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B9398
 		#define CALL_BX_LR			0x0023FD04
 		#define CALL_BX_LR_2			0x00191594
@@ -376,6 +400,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FE44
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001686C0
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168748
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD80
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x001914FC
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E30
 		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x00240B58
 		#define MAGIC				0x0013038C
 		#define ROP_LOC				0x08B85400
@@ -405,6 +432,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022EA24
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00167540
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001675C8
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x001902B8
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E00
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B80B8
 		#define CALL_BX_LR			0x0023ECA0
 		#define CALL_BX_LR_2			0x001902B8
@@ -425,6 +455,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FA8C
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00168718
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001687A0
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00191554
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E00
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B9358
 		#define CALL_BX_LR			0x0023FC6C
 		#define CALL_BX_LR_2			0x00191554
@@ -445,6 +478,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FB20
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00168760
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001687E8
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x0019159C
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E00
 		#define BLX_R5_LDMFD_SP_R4_5_6_7_8_PC	0x001B93A0
 		#define CALL_BX_LR			0x0023FD00
 		#define CALL_BX_LR_2			0x0019159C
@@ -478,6 +514,9 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FE08
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001686DC
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168764
+		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
+		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00191504
+		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E00
 		#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x00240B50
 		#define MAGIC				0x00130344
 		#define ROP_LOC				0x08B88400
@@ -536,10 +575,25 @@
 #define LABEL(a)	JOIN(loc_, a)
 #define LINE_LABEL	LABEL(__LINE__)
 #if defined(SPIDER_4X)
-	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_PC + 4, GX_SetTextureCopy, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, POP_R0_PC, 0x00000008
+	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_PC + 4, GX_SetTextureCopyCmd, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, POP_R0_PC, 0x00000008
 #else
-	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC + 4, GX_SetTextureCopy, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008
+	#define rop_gx_texture_copy(src, dst, size)	LINE_LABEL:	.word POP_R0_PC, nn__gxlow__CTR__detail__GetInterruptReceiver+0x58, POP_R1_PC, ROP_LOC+LINE_LABEL+0x14, nn__gxlow__CTR__CmdReqQueueTx__TryEnqueue_LDMFD_SP_R4_5_6_7_8_9_10_PC + 4, GX_SetTextureCopyCmd, src, dst, (size+0xF)&~0xF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000008
 #endif
 #define rop_jump(address)		.word POP_R4_5_6_7_8_9_10_11_12_PC, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, GARBAGE, POP_PC, LDMFD_SP_R4_5_6_LR_BX_R12, GARBAGE, GARBAGE, GARBAGE, address-4, SP_LR_LDMFD_SP_LR_PC
 #define rop_jump_arm			.word CODE_ENTRY
 #define rop_store(addr, val)		.word POP_R0_PC, addr, POP_R1_PC, val, STR_R1_0_POP_R4_PC, GARBAGE
+
+// Aliases
+#define MEMCPY_LOC					MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
+#define GX_SETTEXTURECOPY_LOC		GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC
+#define GSGPU_FLUSHDATACACHE_LOC	GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC
+#define SVCSLEEPTHREAD_LOC			SVC_0A_BX_LR
+#define SRVGETSERVICEHANDLE_LOC		srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC
+
+#define FREAD_LOC					IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
+#define FWRITE_LOC					IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
+#if defined(SPIDER_4X)
+	#define FOPEN_LOC				IFile_Open_LDMFD_SP_R4_5_6_7_PC
+#else
+	#define FOPEN_LOC				IFile_Open_LDMFD_SP_R4_5_6_7_8_PC
+#endif
