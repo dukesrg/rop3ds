@@ -7,7 +7,7 @@
 #define FILE_CREATE			0x00000004
 #define GARBAGE				0x00230040
 
-#if defined(MSET_4X) || defined(MSET_4X_DG)
+#if defined(MSET_4X) || defined(MSET_4X_DG) || defined(MSET_4X_NDG)
 	#define ROP_LOC				0x002B0000
 	#define	HANDLE_PTR			0x0027FAC4
 	#define GSPGPU_FlushDataCache_LDMFD_SP_R4_5_6_PC	0x0013C5D4
@@ -32,8 +32,10 @@
 	#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001B3B50
 	#define SVC_0A_BX_LR			0x001AEA50
 	#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x001BFA60
-	#if defined(MSET_4X_DG) || defined(MSET_DG)
-		#define CODE_TARGET			0x17EB0000
+	#if defined(MSET_4X) || defined(MSET_4X_DG)
+		#define CODE_TARGET			0x17EBD000
+    #elif defined(MSET_4X_NDG)
+        #define CODE_TARGET         0x1BAB0000
 	#else
 		#define CODE_TARGET			0x17FAD000
 	#endif
@@ -525,7 +527,7 @@
 #else
 	#error ROP version not defined
 #endif
-#if defined(MSET_4X) || defined(MSET_4X_DG) || defined(MSET_6X)
+#if defined(MSET_4X) || defined(MSET_4X_DG) || defined(MSET_6X) || defined(MSET_4X_NDG)
 	#define CODE_ENTRY			0x00240000
 	#define BUFFER_LOC			0x14700000
 	#define rop_fs_mount(drive)		.word POP_R0_PC, drive, FS_MOUNTSDMC_LDMFD_SP_R3_4_5_PC + 4, GARBAGE, GARBAGE, GARBAGE
