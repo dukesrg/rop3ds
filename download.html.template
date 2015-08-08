@@ -1,11 +1,8 @@
 <html><head><script>
 d=document,r=parent,w=window,n=navigator.userAgent;
 if(r==w){
-	l='Cakes.dat',g=decodeURIComponent(w.location.search.slice(1));
-	if(g.length>1){
-		g=g[1].split('&');
-		if(g[0].length>0&&g[0].length<25)l=g[0];
-	}
+	l='Cakes.dat',g=w.location.search.slice(1).split('&');
+	if(g[0].length>0)l=decodeURIComponent(g[0]);
 	d.title='Load '+l;
 	w.onload=function(){
 		if(n.indexOf('1.7538.CN')>=0)n=n.replace('.CN',confirm('系统版本4.2-4.4选择OK，系统版本4.5选择取消。')?'.CN.42':'.CN.45');
