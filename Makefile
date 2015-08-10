@@ -4,7 +4,7 @@ endif
 
 include $(DEVKITARM)/base_rules
 
-all: index.html compat.html rop.dat LoadCode.dat LoadCodeMset.dat
+all: index.html compat.html rop.dat LoadCode.dat LoadCodeMset.dat CreateDir.dat
 
 %.dat: %.elf
 	@$(OBJCOPY) -O binary $^ $@

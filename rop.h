@@ -516,6 +516,7 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FE08
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001686DC
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168764
+		#define IDir_Create_STMFD_SP_R4_5_6_LR_PC	0x00168544
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00191504
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E00
@@ -567,6 +568,7 @@
 	#define rop_memcpy(dst, src, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, dst, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
 	#define rop_file_read(handle, readcount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, readcount, buffer, size, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
 	#define rop_file_write(handle, writecount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, writecount, buffer, size, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
+	#define rop_dir_create(dir)		.word POP_LR_PC, POP_PC, POP_R0_PC, ROP_LOC+dir, IDir_Create_STMFD_SP_R4_5_6_LR_PC
 	#if defined(SPIDER_21) || defined(SPIDER_4X)
 		#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, ROP_LOC+filename, mode, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_PC
 	#else
