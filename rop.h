@@ -147,6 +147,14 @@
 	#define IFile_Open_LDMFD_SP_R4_5_6_7_PC	0x0025B0A4
 	#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x002FC8E4
 	#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00311D90
+	#define IFile_Close			0x00311C48
+	#define IArchive_CreateFile		0x00324D78
+	#define IArchive_CreateDir		0x002FC694
+	#define IArchive_RenameFile	0x0013DA8C
+	#define IArchive_RenameDir		0x0013DB58
+	#define IArchive_DeleteFile		0x00311AE8
+	#define IArchive_DeleteDir		0x00324E4C
+	#define IArchive_DeleteDirR	0x0013DCDC
 	#define MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR	0x0029BF60
 	#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC 0x002C62E4
 	#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00344B84
@@ -183,6 +191,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022E334
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001674BC
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00167544
+		#define IFile_Close			0x00167390
+		#define IArchive_CreateFile		0x0017DB74
+		#define IArchive_CreateDir		0x00167324
+		#define IArchive_RenameFile	0x0027B04C
+		#define IArchive_RenameDir		0x0027B10C
+		#define IArchive_DeleteFile		0x001671A0
+		#define IArchive_DeleteDir		0x0018ECB0
+		#define IArchive_DeleteDirR	0x0027B2AC
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00190118
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E0C
@@ -212,6 +228,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022F284
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001680F8
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168180
+		#define IFile_Close			0x00167FCC
+		#define IArchive_CreateFile		0x0017E744
+		#define IArchive_CreateDir		0x00167F60
+		#define IArchive_RenameFile	0x0027B874
+		#define IArchive_RenameDir		0x0027B934
+		#define IArchive_DeleteFile		0x00167DDC
+		#define IArchive_DeleteDir		0x0018F8B0
+		#define IArchive_DeleteDirR	0x0027BAD4
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00190D30
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E0C
@@ -239,6 +263,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022F2D8
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001680FC
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168184
+		#define IFile_Close			0x00167FD0
+		#define IArchive_CreateFile		0x0017E748
+		#define IArchive_CreateDir		0x00167F64
+		#define IArchive_RenameFile	0x0027B8C4
+		#define IArchive_RenameDir		0x0027B984
+		#define IArchive_DeleteFile		0x00167DE0
+		#define IArchive_DeleteDir		0x0018F908
+		#define IArchive_DeleteDirR	0x0027BB24
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00190D34
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E0C
@@ -281,6 +313,14 @@
 	#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022E2B0 
 	#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00166FC8 
 	#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00167050 
+	#define IFile_Close			0x00166E9C
+	#define IArchive_CreateFile		0x0017D66C
+	#define IArchive_CreateDir		0x00166E30
+	#define IArchive_RenameFile	0x0027AFFC
+	#define IArchive_RenameDir		0x0027B0BC
+	#define IArchive_DeleteFile		0x00166CAC
+	#define IArchive_DeleteDir		0x0018E7A4
+	#define IArchive_DeleteDirR	0x0027B25C
 	#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD68
 	#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x0018FC0C
 	#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E34
@@ -320,6 +360,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022EA5C
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x0016751C
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001675A4
+		#define IFile_Close			0x001673F0
+		#define IArchive_CreateFile		0x0017DB60
+		#define IArchive_CreateDir		0x00167384
+		#define IArchive_RenameFile	0x0027B80C
+		#define IArchive_RenameDir		0x0027B8CC
+		#define IArchive_DeleteFile		0x00167200
+		#define IArchive_DeleteDir		0x0018EE40
+		#define IArchive_DeleteDirR	0x0027BA6C
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD80
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x001902A8
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E30
@@ -343,6 +391,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FAC8
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001686FC
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168784
+		#define IFile_Close			0x001685D0
+		#define IArchive_CreateFile		0x0017EDAC
+		#define IArchive_CreateDir		0x00168564
+		#define IArchive_RenameFile	0x0027C0BC
+		#define IArchive_RenameDir		0x0027C17C
+		#define IArchive_DeleteFile		0x001683E0
+		#define IArchive_DeleteDir		0x001900E4
+		#define IArchive_DeleteDirR	0x0027C31C
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD80
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x0019154C
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E30
@@ -366,6 +422,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FB5C
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00168744
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001687CC
+		#define IFile_Close			0x00168618
+		#define IArchive_CreateFile		0x0017EDF4
+		#define IArchive_CreateDir		0x001685AC
+		#define IArchive_RenameFile	0x0027C14C
+		#define IArchive_RenameDir		0x0027C20C
+		#define IArchive_DeleteFile		0x00168428
+		#define IArchive_DeleteDir		0x0019012C
+		#define IArchive_DeleteDirR	0x0027C3AC
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD80
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00191594
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E30
@@ -402,6 +466,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FE44
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001686C0
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168748
+		#define IFile_Close			0x00168594
+		#define IArchive_CreateFile		0x0017EDA8
+		#define IArchive_CreateDir		0x00168528
+		#define IArchive_RenameFile	0x0027C434
+		#define IArchive_RenameDir		0x0027C4F4
+		#define IArchive_DeleteFile		0x001683A4
+		#define IArchive_DeleteDir		0x0019007C
+		#define IArchive_DeleteDirR	0x0027C694
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD80
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x001914FC
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E30
@@ -434,6 +506,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022EA24
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00167540
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001675C8
+		#define IFile_Close			0x00167414
+		#define IArchive_CreateFile		0x0017DB74
+		#define IArchive_CreateDir		0x001673A8
+		#define IArchive_RenameFile	0x0027B824
+		#define IArchive_RenameDir		0x0027B8E4
+		#define IArchive_DeleteFile		0x00167224
+		#define IArchive_DeleteDir		0x0018EE50
+		#define IArchive_DeleteDirR	0x0027BA84
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x001902B8
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E00
@@ -457,6 +537,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FA8C
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00168718
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001687A0
+		#define IFile_Close			0x001685EC
+		#define IArchive_CreateFile		0x0017EDB8
+		#define IArchive_CreateDir		0x00168580
+		#define IArchive_RenameFile	0x0027C0D4
+		#define IArchive_RenameDir		0x0027C194
+		#define IArchive_DeleteFile		0x001683FC
+		#define IArchive_DeleteDir		0x001900EC
+		#define IArchive_DeleteDirR	0x0027C334
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00191554
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E00
@@ -480,6 +568,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FB20
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x00168760
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x001687E8
+		#define IFile_Close			0x00168634
+		#define IArchive_CreateFile		0x0017EE00
+		#define IArchive_CreateDir		0x001685C8
+		#define IArchive_RenameFile	0x0027C16C
+		#define IArchive_RenameDir		0x0027C22C
+		#define IArchive_DeleteFile		0x00168444
+		#define IArchive_DeleteDir		0x00190134
+		#define IArchive_DeleteDirR	0x0027C3CC
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x0019159C
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E00
@@ -516,7 +612,14 @@
 		#define IFile_Open_LDMFD_SP_R4_5_6_7_8_PC	0x0022FE08
 		#define IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC	0x001686DC
 		#define IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC	0x00168764
-		#define IDir_Create_STMFD_SP_R4_5_6_LR_PC	0x00168544
+		#define IFile_Close			0x001685B0
+		#define IArchive_CreateFile		0x0017EDB4
+		#define IArchive_CreateDir		0x00168544
+		#define IArchive_RenameFile	0x0027C454
+		#define IArchive_RenameDir		0x0027C514
+		#define IArchive_DeleteFile		0x001683C0
+		#define IArchive_DeleteDir		0x00190084
+		#define IArchive_DeleteDirR	0x0027C6B4
 		#define GX_SetTextureCopy_LDMFD_SP_R4_5_6_7_8_9_PC	0x0011DD48
 		#define GSPGPU_FlushDataCache_wrap_LDMFD_SP_R4_5_6_PC	0x00191504
 		#define srvGetServiceHandle_LDMFD_SP_R4_5_6_7_8_PC	0x00114E00
@@ -568,7 +671,13 @@
 	#define rop_memcpy(dst, src, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, dst, POP_R1_2_3_PC, src, size, GARBAGE, MEMCPY_LDMFD_SP_R4_5_6_7_8_9_10_LR
 	#define rop_file_read(handle, readcount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, readcount, buffer, size, IFile_Read_LDMFD_SP_R4_5_6_7_8_9_PC
 	#define rop_file_write(handle, writecount, buffer, size)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, writecount, buffer, size, IFile_Write_LDMFD_SP_R4_5_6_7_8_9_10_11_PC
-	#define rop_dir_create(dir)		.word POP_LR_PC, POP_PC, POP_R0_PC, ROP_LOC+dir, IDir_Create_STMFD_SP_R4_5_6_LR_PC
+	#define rop_file_close(handle)		.word POP_LR_PC, POP_PC, POP_R0_PC, handle, IFile_Close
+	#define rop_file_rename(from, to)	.word POP_LR_PC, POP_PC, POP_R0_PC, ROP_LOC+from, POP_R1_PC, ROP_LOC+to, IArchive_RenameFile
+	#define rop_file_delete(filename)	.word POP_LR_PC, POP_PC, POP_R0_PC, ROP_LOC+filename, IArchive_DeleteFile
+	#define rop_dir_create(dir)			.word POP_LR_PC, POP_PC, POP_R0_PC, ROP_LOC+dir, IArchive_CreateDir
+	#define rop_dir_rename(from, to)	.word POP_LR_PC, POP_PC, POP_R0_PC, ROP_LOC+from, POP_R1_PC, ROP_LOC+to, IArchive_RenameDir
+	#define rop_dir_delete(dir)			.word POP_LR_PC, POP_PC, POP_R0_PC, ROP_LOC+dir, IArchive_DeleteDir
+	#define rop_dir_delete_r(dir)		.word POP_LR_PC, POP_PC, POP_R0_PC, ROP_LOC+dir, IArchive_DeleteDirR
 	#if defined(SPIDER_21) || defined(SPIDER_4X)
 		#define rop_file_open(handle, filename, mode)	.word POP_LR_PC, POP_PC, POP_R0_PC, handle, POP_R1_2_3_PC, ROP_LOC+filename, mode, GARBAGE, IFile_Open_LDMFD_SP_R4_5_6_7_PC
 	#else
