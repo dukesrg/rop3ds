@@ -15,4 +15,5 @@ _start:
 	rop_flush_data_cache(BUFFER_LOC, MSET_ARM_CODE_SIZE)
 	rop_gx_texture_copy(BUFFER_LOC, CODE_TARGET, MSET_ARM_CODE_SIZE)
 	rop_sleep(1000000000)
+	.word POP_R0_PC, FILE_NAME
 	rop_jump_arm
